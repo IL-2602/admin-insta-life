@@ -1,6 +1,6 @@
-@forward 'typography';
-@forward 'colors';
-@forward 'boilerplate';
-@forward 'mixins';
-@forward 'globals';
-@forward 'zindex';
+@forward './variables/typography';
+@forward './variables/colors';
+@forward './variables/boilerplate';
+@forward './variables/mixins';
+@forward './variables/globals';
+@forward './variables/zindex';
