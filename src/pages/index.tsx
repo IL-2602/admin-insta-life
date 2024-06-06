@@ -1,4 +1,4 @@
-import { RootLayout, getRootLayout } from '@/layouts/RootLayout/RootLayout'
+import { getRootLayout } from '@/layouts/RootLayout/RootLayout'
 import Head from 'next/head'
 
 const HomePage = () => {

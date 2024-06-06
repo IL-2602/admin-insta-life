@@ -1,16 +1,15 @@
 import { PropsWithChildren, ReactElement } from 'react'
 
-import { Container } from '@/shared/ui/Container'
+import { AuthLayout } from '@/layouts/AuthLayout/AuthLayout'
+import { DefaultLayout } from '@/layouts/DefualtLayout/DefaultLayout'
 import { NextPage } from 'next'
 
-export const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
-  return (
-    <Container>
-      <header>Header</header>
-      <aside>SideBar</aside>
-      <main>{children}</main>
-    </Container>
-  )
+const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
+  const token = ''
+
+  return token ? <AuthLayout>{children}</AuthLayout> : <DefaultLayout>{children}</DefaultLayout>
 }
 
 export const getRootLayout = (page: ReactElement) => <RootLayout>{page}</RootLayout>
+
+export default RootLayout
