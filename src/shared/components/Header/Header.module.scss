@@ -1,5 +1,9 @@
 .header {
-  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
   height: var(--header-height);
 
   &::after {
@@ -14,66 +18,10 @@
 
     background: var(--color-dark-300);
   }
-}
-
-.container {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: space-between;
 
   .logo {
     display: flex;
     align-items: baseline;
   }
 
-  .meContainer {
-    display: flex;
-    gap: 48px;
-  }
-
-  .notMeContainer {
-    display: flex;
-
-    .btnLogIn {
-      margin-right: 34px;
-      margin-left: 46px;
-    }
-
-    .btnSignUp {
-      height: 35px;
-      margin-top: 2px;
-    }
-  }
-}
-
-.wrapper {
-  display: flex;
-  gap: 54px;
-}
-
-.bellButton {
-  position: relative;
-  display: inline-block;
-  padding-top: 8px;
-}
-
-.span {
-  position: absolute;
-  top: 1px;
-  right: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 15px;
-  height: 15px;
-
-  font-size: 10px;
-  line-height: 8px;
-  color: var(--color-light-100);
-
-  background-color: var(--color-danger-500);
-  border-radius: 50%;
 }

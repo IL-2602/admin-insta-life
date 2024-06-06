@@ -41,7 +41,6 @@ export const SelectComponent = ({
   className,
   currentValue,
   fullWidth,
-
   onValueChange,
   optionTextVariant = 'regular14',
   selectItems,
