@@ -1,0 +1,11 @@
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-light-100);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: var(--color-dark-300);
+}
+:root {
+  --header-height: 60px;
+}
