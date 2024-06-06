@@ -1,0 +1,1 @@
+export { NoCoverIcon } from './NoCover'
