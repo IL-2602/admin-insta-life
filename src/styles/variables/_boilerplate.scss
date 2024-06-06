@@ -93,7 +93,7 @@ html {
 
 body {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   overflow-x: hidden;
   color: var(--color-light-100);
   font: var(--font-regular-14);
@@ -134,4 +134,8 @@ select:-webkit-autofill:focus {
   &:hover {
     opacity: 0.8;
   }
+}
+
+#__next {
+  height: 100%;
 }

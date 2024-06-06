@@ -1,6 +1,7 @@
+import { RootLayout, getRootLayout } from '@/layouts/RootLayout/RootLayout'
 import Head from 'next/head'
 
-export default function Home() {
+const HomePage = () => {
   return (
     <>
       <Head>
@@ -9,7 +10,11 @@ export default function Home() {
         <meta content={'width=device-width, initial-scale=1'} name={'viewport'} />
         <link href={'/favicon.ico'} rel={'icon'} />
       </Head>
-      <main>HOME!!!</main>
+      <div>HOME!!!</div>
     </>
   )
 }
+
+HomePage.getLayout = getRootLayout
+
+export default HomePage
