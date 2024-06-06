@@ -4,12 +4,12 @@ pipeline {
     agent any
     environment {
         ENV_TYPE = "production"
-        PORT = 3263
+        PORT = 3425
         NAMESPACE = "instalife-fun"
         REGISTRY_HOSTNAME = "il2702"
         REGISTRY = "registry.hub.docker.com"
-        PROJECT = "insta-life"
-        DEPLOYMENT_NAME = "insta-life-deployment"
+        PROJECT = "superadmin-insta-life"
+        DEPLOYMENT_NAME = "superadmin-insta-life-deployment"
         IMAGE_NAME = "${env.BUILD_ID}_${env.ENV_TYPE}_${env.GIT_COMMIT}"
         DOCKER_BUILD_NAME = "${env.REGISTRY_HOSTNAME}/${env.PROJECT}:${env.IMAGE_NAME}"
     }
