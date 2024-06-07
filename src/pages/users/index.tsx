@@ -1,5 +1,6 @@
-import { getRootLayout } from '@/layouts/local/RootLayout'
 import Head from 'next/head'
+
+import { getRootLayout } from '../../layouts/public/rootLayout'
 
 const UsersPage = () => {
   return (

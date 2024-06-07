@@ -1,3 +1,4 @@
+import { NoCoverIcon } from '@/shared/assets/icons/NoCover'
 import { PaymentsIcon } from '@/shared/assets/icons/Payments'
 import { PersonIcon } from '@/shared/assets/icons/Person'
 import { StatisticsIcon } from '@/shared/assets/icons/Statistics'
@@ -8,8 +9,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import s from './SideBar.module.scss'
-
-import { NoCoverIcon } from '../../assets/icons/NoCover'
 
 type Props = {
   className?: string

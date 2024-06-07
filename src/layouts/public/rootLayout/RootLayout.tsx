@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactElement } from 'react'
 
-import { AuthLayout } from '@/layouts/local/AuthLayout/AuthLayout'
-import { DefaultLayout } from '@/layouts/local/DefualtLayout/DefaultLayout'
+import { AuthLayout } from '@/layouts/public/authLayout/AuthLayout'
+import { DefaultLayout } from '@/layouts/public/defualtLayout/DefaultLayout'
 import { NextPage } from 'next'
 
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
