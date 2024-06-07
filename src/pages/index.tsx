@@ -1,3 +1,4 @@
+import { getRootLayout } from '@/layouts/public/rootLayout'
 import { SignIn } from '@/widgets/auth/signIn'
 import Head from 'next/head'
 
