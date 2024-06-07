@@ -1,4 +1,4 @@
-import { getRootLayout } from '@/layouts/public/rootLayout/RootLayout'
+import { SignIn } from '@/widgets/auth/signIn'
 import Head from 'next/head'
 
 const HomePage = () => {
@@ -10,7 +10,9 @@ const HomePage = () => {
         <meta content={'width=device-width, initial-scale=1'} name={'viewport'} />
         <link href={'/favicon.ico'} rel={'icon'} />
       </Head>
-      <div>HOME!!!</div>
+      <main>
+        <SignIn.widget />
+      </main>
     </>
   )
 }

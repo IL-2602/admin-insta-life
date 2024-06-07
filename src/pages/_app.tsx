@@ -4,6 +4,9 @@ import { ReactElement, ReactNode } from 'react'
 
 import { NextPage } from 'next'
 
+import client from '@/services/apollo-client'
+import { ApolloProvider } from '@apollo/client'
+
 import '@/styles/index.scss'
 
 export type NextPageWithLayout<P = {}> = {
@@ -17,5 +20,9 @@ type AppPropsWithLayout = {
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? (page => page)
 
-  return getLayout(<Component {...pageProps} />)
+  return (
+    <ApolloProvider client={client}>
+      getLayout(<Component {...pageProps} />)
+    </ApolloProvider>
+  )
 }
