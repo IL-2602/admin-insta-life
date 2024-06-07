@@ -1,3 +1,4 @@
+import { SignIn } from '@/widgets/auth/signIn'
 import Head from 'next/head'
 
 export default function Home() {
@@ -9,7 +10,9 @@ export default function Home() {
         <meta content={'width=device-width, initial-scale=1'} name={'viewport'} />
         <link href={'/favicon.ico'} rel={'icon'} />
       </Head>
-      <main>HOME!!!</main>
+      <main>
+        <SignIn.widget />
+      </main>
     </>
   )
 }
