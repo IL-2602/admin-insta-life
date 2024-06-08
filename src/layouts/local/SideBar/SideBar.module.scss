@@ -1,0 +1,25 @@
+.aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  & > *:not(:first-child) {
+    margin-top: 24px;
+  }
+
+  & > *:first-child {
+    margin-top: 72px;
+  }
+
+  .link {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: inherit;
+  }
+
+  .active {
+    color: var(--color-primary-500)
+  }
+}
+
