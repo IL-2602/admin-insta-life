@@ -1,3 +1,6 @@
+import { getRootLayout } from '@/layouts/public/rootLayout'
+import { AuthRouteChecker } from '@/shared/hocs/AuthRouteChecker'
+import { SignIn } from '@/widgets/auth/signIn'
 import Head from 'next/head'
 
 const SignInPage = () => {
@@ -9,9 +12,11 @@ const SignInPage = () => {
         <meta content={'width=device-width, initial-scale=1'} name={'viewport'} />
         <link href={'/favicon.ico'} rel={'icon'} />
       </Head>
-      <div>КТО СОЗДАЛ ПУСТУЮ СТРАНИЦУ!!!!!!!!!!</div>
+      <SignIn.widget />
     </>
   )
 }
 
-export default SignInPage
+SignInPage.getLayout = getRootLayout
+
+export default AuthRouteChecker(SignInPage)

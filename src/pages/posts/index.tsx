@@ -1,4 +1,5 @@
 import { getRootLayout } from '@/layouts/public/rootLayout'
+import { AuthDefender } from '@/shared/hocs/AuthDefender'
 import Head from 'next/head'
 
 const PostsPage = () => {
@@ -17,4 +18,4 @@ const PostsPage = () => {
 
 PostsPage.getLayout = getRootLayout
 
-export default PostsPage
+export default AuthDefender(PostsPage)
