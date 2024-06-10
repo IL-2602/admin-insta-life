@@ -24,9 +24,7 @@ const splitLink = split(
   httpLink
 )
 
-const authLink = setContext((_, { headers }) => {
-  const base64password = btoa('admin@gmail.com:admin')
-
+const authLink = setContext((_, { base64password, headers }) => {
   return {
     headers: {
       ...headers,

@@ -1,5 +1,5 @@
 export const ROUTES = {
-  AUTH: '/auth/',
+  AUTH: '/auth/sign-in',
   DEFAULT: '/',
   PAYMENTS: '/payments',
   POSTS: '/posts',

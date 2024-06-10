@@ -1,5 +1,5 @@
 import { getRootLayout } from '@/layouts/public/rootLayout'
-import { SignIn } from '@/widgets/auth/signIn'
+import { AuthDefender } from '@/shared/hocs/AuthDefender'
 import Head from 'next/head'
 
 const HomePage = () => {
@@ -12,7 +12,13 @@ const HomePage = () => {
         <link href={'/favicon.ico'} rel={'icon'} />
       </Head>
       <main>
-        <SignIn.widget />
+        <iframe
+          allowFullScreen
+          className={'giphy-embed'}
+          height={'400'}
+          src={'https://giphy.com/embed/gEKz4VLX7fQlsl8SFE'}
+          width={'400'}
+        ></iframe>
       </main>
     </>
   )
@@ -20,4 +26,4 @@ const HomePage = () => {
 
 HomePage.getLayout = getRootLayout
 
-export default HomePage
+export default AuthDefender(HomePage)

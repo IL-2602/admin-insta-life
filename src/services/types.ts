@@ -297,7 +297,7 @@ export type SubscriptionPaymentsModel = {
   userId?: Maybe<Scalars['Int']['output']>
   userName: Scalars['String']['output']
 }
-/*eslint max-lines: ["error", {"max": 333}]*/
+// eslint-disable-next-line max-lines
 export enum SubscriptionType {
   Day = 'DAY',
   Monthly = 'MONTHLY',

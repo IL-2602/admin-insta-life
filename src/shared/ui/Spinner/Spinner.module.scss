@@ -9,6 +9,14 @@
   animation: spin 1s linear infinite;
 }
 
+.defaultSpinner {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  min-width: 100%;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
