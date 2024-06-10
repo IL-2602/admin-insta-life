@@ -1,24 +1,42 @@
 import { memo } from 'react'
 
-import { GET_USER } from '@/services/queries/users'
-import { GetUserQuery, GetUserQueryVariables } from '@/services/queries/users.generated'
+import { Button } from '@/shared/ui/Button'
+import { Card } from '@/shared/ui/Card'
+import { Spinner } from '@/shared/ui/Spinner'
+import { Typography } from '@/shared/ui/Typography'
+import { ControlledTextField } from '@/shared/ui/controlledInsta/ControlledTextField/ControlledTextField'
 import { SignInProps } from '@/widgets/auth/signIn/container'
-import { useQuery } from '@apollo/client'
 
-export const SignIn = memo(({}: SignInProps) => {
-  const { data } = useQuery<GetUserQuery, GetUserQueryVariables>(GET_USER, {
-    variables: { userId: 3 },
-  })
+import s from './SignIn.module.scss'
 
-  if (!data) {
-    return null
-  }
-
+export const SignIn = memo(({ control, isDisabled, loading, onSubmit, t }: SignInProps) => {
   return (
-    <div>
-      <span>email: {data.getUser.email}</span>
-      <hr></hr>
-      <span>userId: {data.getUser.id}</span>
-    </div>
+    <Card className={s.container}>
+      <Typography className={s.title} variant={'h1'}>
+        {t.auth.title}
+      </Typography>
+      <form onSubmit={onSubmit}>
+        <ControlledTextField
+          className={s.email}
+          control={control}
+          label={t.auth.labelEmail}
+          name={'email'}
+          placeholder={'Epam@epam.com'}
+        />
+        <ControlledTextField
+          className={s.pass}
+          control={control}
+          label={t.auth.labelPassword}
+          name={'password'}
+          placeholder={'**********'}
+          type={'password'}
+        />
+        <div className={s.error}>
+          <Button className={s.button} disabled={isDisabled} fullWidth>
+            <Typography as={'h3'}>{loading ? <Spinner /> : t.auth.submit}</Typography>
+          </Button>
+        </div>
+      </form>
+    </Card>
   )
 })
