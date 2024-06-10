@@ -16,10 +16,31 @@
     gap: 12px;
     align-items: center;
     color: inherit;
+
+    &:hover {
+      color: var(--color-primary-100);
+    }
   }
 
   .active {
-    color: var(--color-primary-500)
+    color: var(--color-primary-500);
+  }
+
+  .btnLogOut {
+    display: flex;
+    gap: 12px;
+    margin-top: 400px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover .logOutIcon {
+      color: var(--color-primary-100);
+    }
+
+    &:hover p {
+      color: var(--color-primary-100);
+    }
   }
 }
-

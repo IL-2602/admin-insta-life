@@ -6,4 +6,11 @@ export const ru = {
     submit: 'Войти',
     title: 'Войти',
   },
+  sidebar: {
+    logout: 'Выйти',
+    paymentsList: 'Список оплат',
+    postsList: 'Список постов',
+    statistics: 'Статистика',
+    usersList: 'Список пользователей',
+  },
 }

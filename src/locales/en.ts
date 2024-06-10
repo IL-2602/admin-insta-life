@@ -6,4 +6,11 @@ export const en = {
     submit: 'Sign in',
     title: 'Sign in',
   },
+  sidebar: {
+    logout: 'Log out',
+    paymentsList: 'Payments list',
+    postsList: 'Posts list',
+    statistics: 'Statistics',
+    usersList: 'Users list',
+  },
 }
