@@ -4,13 +4,13 @@ import Image from 'next/image'
 
 import GBFlag from '../../../../public/gb-flag.svg'
 import RUFlag from '../../../../public/ru-flag.svg'
-import { SelectComponent } from './Select'
+import { SelectLanguage } from './SelectLanguage'
 
 const meta = {
-  component: SelectComponent,
+  component: SelectLanguage,
   tags: ['autodocs'],
-  title: 'Components/SelectComponent',
-} satisfies Meta<typeof SelectComponent>
+  title: 'Components/SelectLanguage',
+} satisfies Meta<typeof SelectLanguage>
 
 export default meta
 type Story = StoryObj<typeof meta>
