@@ -6,7 +6,7 @@ import { Typography } from '@/shared/ui/Typography'
 import * as Select from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 
-import s from './Select.module.scss'
+import s from './SelectLanguage.module.scss'
 
 type LanguageSelectItem = {
   icon?: ReactElement
@@ -37,7 +37,7 @@ type SelectPropsType = {
   values?: Array<string>
 }
 
-export const SelectComponent = ({
+export const SelectLanguage = ({
   className,
   currentValue,
   fullWidth,
