@@ -1,8 +1,10 @@
 import type { AppProps } from 'next/app'
 
 import { ReactElement, ReactNode } from 'react'
+import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 
+import { store } from '@/app/store'
 import client from '@/services/apollo-client'
 import { Cross } from '@/shared/assets/icons/Cross'
 import { Button } from '@/shared/ui/Button'
@@ -25,21 +27,23 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <ApolloProvider client={client}>
-      <ToastContainer
-        autoClose={3000}
-        closeButton={({ closeToast }) => (
-          <Button
-            className={'closeBtnToast'}
-            onClick={closeToast}
-            type={'button'}
-            variant={'noStyle'}
-          >
-            <Cross />
-          </Button>
-        )}
-        position={'bottom-left'}
-      />
-      {getLayout(<Component {...pageProps} />)}
+      <Provider store={store}>
+        <ToastContainer
+          autoClose={3000}
+          closeButton={({ closeToast }) => (
+            <Button
+              className={'closeBtnToast'}
+              onClick={closeToast}
+              type={'button'}
+              variant={'noStyle'}
+            >
+              <Cross />
+            </Button>
+          )}
+          position={'bottom-left'}
+        />
+        {getLayout(<Component {...pageProps} />)}
+      </Provider>
     </ApolloProvider>
   )
 }
