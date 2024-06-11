@@ -10,3 +10,42 @@ export const GET_USER = gql`
     }
   }
 `
+
+export const GET_USERS = gql`
+  query GetUsers(
+    $pageSize: Int
+    $pageNumber: Int
+    $sortBy: String
+    $sortDirection: SortDirection
+    $statusFilter: UserBlockStatus
+  ) {
+    getUsers(
+      pageSize: $pageSize
+      pageNumber: $pageNumber
+      sortBy: $sortBy
+      sortDirection: $sortDirection
+      statusFilter: $statusFilter
+    ) {
+      users {
+        id
+        userName
+        userBan {
+          reason
+          createdAt
+        }
+        profile {
+          lastName
+          firstName
+        }
+        createdAt
+        email
+      }
+      pagination {
+        pagesCount
+        page
+        pageSize
+        totalCount
+      }
+    }
+  }
+`
