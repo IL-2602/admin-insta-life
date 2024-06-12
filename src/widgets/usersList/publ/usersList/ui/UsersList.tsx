@@ -5,7 +5,6 @@ import { Spinner } from '@/shared/ui/Spinner'
 import { Table } from '@/shared/ui/Table'
 import { Typography } from '@/shared/ui/Typography'
 import { SearchUser } from '@/widgets/usersList/local/searchUser'
-import { SortUsers } from '@/widgets/usersList/local/sortUsers'
 import { UsersListProps } from '@/widgets/usersList/publ/usersList/container'
 
 import s from './UsersList.module.scss'

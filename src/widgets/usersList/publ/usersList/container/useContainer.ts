@@ -1,8 +1,11 @@
 import { useState } from 'react'
 
+import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { GET_USERS } from '@/services/queries/users'
 import { GetUsersQuery, GetUsersQueryVariables } from '@/services/queries/users.generated'
 import { SortDirection, UserBlockStatus } from '@/services/types'
+import { useTranslation } from '@/shared/hooks/useTranslation'
+import { HeadCellSort } from '@/shared/ui/Table/Table'
 import getFromLocalStorage from '@/shared/utils/localStorage/getFromLocalStorage'
 import {
   INITIAL_PAGE_NUMBER,
