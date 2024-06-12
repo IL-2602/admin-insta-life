@@ -22,6 +22,12 @@ export const useContainer = () => {
 
   const state = useAppSelector(state => state.usersReducer)
 
+  const currentBlockStatus: Record<string, UserBlockStatus> = {
+    Blocked: UserBlockStatus.Blocked,
+    'Not Blocked': UserBlockStatus.Unblocked,
+    'Not selected': UserBlockStatus.All,
+  }
+
   const { data, loading: isLoading } = useQuery<GetUsersQuery, GetUsersQueryVariables>(GET_USERS, {
     context: { base64password },
     variables: {
@@ -30,7 +36,7 @@ export const useContainer = () => {
       searchTerm: state.searchByUsername.trim(),
       sortBy: 'createdAt',
       sortDirection: SortDirection.Desc,
-      statusFilter: UserBlockStatus.All,
+      statusFilter: currentBlockStatus[state.userBlockStatus],
     },
   })
 
@@ -42,8 +48,8 @@ export const useContainer = () => {
     }
   }
 
-  const handlePageSize = (value: string) => {
-    setCurrentSize(+value)
+  const handlePageSize = (pageSize: string) => {
+    setCurrentSize(+pageSize)
   }
 
   const users = data?.getUsers.users

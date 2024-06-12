@@ -26,7 +26,13 @@ export const Pagination = ({
   pagesCount,
   totalCount,
 }: Props) => {
-  const pageSizes = ['10', '20', '30', '50', `${totalCount}`]
+  const pageSizes = [
+    '10',
+    '20',
+    '30',
+    '50',
+    `${totalCount > 50 && totalCount < 100 ? totalCount : '100'}`,
+  ]
 
   const { t } = useTranslation()
 

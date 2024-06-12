@@ -26,6 +26,8 @@ type SelectPropsType = {
     | 'overline'
     | 'subtitle1'
     | 'subtitle2'
+  selectContentClassName?: string
+  selectItemClassName?: string
   selectItems?: Array<string>
   values?: Array<string>
 }
@@ -37,6 +39,8 @@ export const SelectComponent = ({
   currentValue,
   fullWidth,
   onValueChange,
+  selectContentClassName,
+  selectItemClassName,
   selectItems = defaultSelectItems,
 }: SelectPropsType) => {
   const [value, setValue] = useState(selectItems[0])
@@ -59,10 +63,13 @@ export const SelectComponent = ({
           <SelectToggle className={isOpen ? s.arrowDown : ''} />
         </Select.Icon>
       </Select.Trigger>
-      <Select.Content className={s.selectContent} position={'popper'}>
+      <Select.Content
+        className={`${s.selectContent} ${selectContentClassName}`}
+        position={'popper'}
+      >
         {selectItems?.map((el, i) => {
           return (
-            <Select.Item className={s.selectItem} key={i} value={el}>
+            <Select.Item className={`${s.selectItem} ${selectItemClassName}`} key={i} value={el}>
               <Select.ItemText>
                 <Typography variant={'regular14'}>{el}</Typography>
               </Select.ItemText>
