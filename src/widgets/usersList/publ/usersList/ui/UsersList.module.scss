@@ -14,4 +14,13 @@
     place-items: center;
     height: 50vh;
   }
+
+  .sortableButton {
+    cursor: pointer;
+    padding: 10px;
+
+    &:hover {
+        background: var(--color-dark-100);
+    }
+  }
 }
