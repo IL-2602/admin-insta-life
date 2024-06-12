@@ -2,11 +2,13 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 export const usersSlice = createSlice({
   initialState: {
-    users: [],
+    searchByUsername: '',
   },
-  name: 'users',
+  name: 'usersReducer',
   reducers: {
-    searchUsers: (state, action: PayloadAction<any>) => {},
+    searchUsers: (state, action: PayloadAction<string>) => {
+      state.searchByUsername = action.payload
+    },
   },
 })
 

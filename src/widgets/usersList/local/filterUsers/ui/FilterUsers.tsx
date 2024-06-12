@@ -1,11 +1,11 @@
 import { memo } from 'react'
 
 import { SelectComponent } from '@/shared/ui/SelectComponent'
-import { SortUsersProps } from '@/widgets/usersList/local/sortUsers/container'
+import { FilterUsersProps } from '@/widgets/usersList/local/filterUsers/container'
 
-import s from './SortUsers.module.scss'
+import s from './FilterUsers.module.scss'
 
-export const SortUsers = memo(({}: SortUsersProps) => {
+export const FilterUsers = memo(({ t }: FilterUsersProps) => {
   const selectBlockedUsers = ['Blocked', 'Not Blocked']
 
   return (

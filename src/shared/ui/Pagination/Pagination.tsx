@@ -1,3 +1,4 @@
+import { useTranslation } from '@/shared/hooks/useTranslation'
 import { Button } from '@/shared/ui/Button'
 import { LeftArrow } from '@/shared/ui/LeftArrow'
 import { RightArrow } from '@/shared/ui/RightArrow'
@@ -27,14 +28,16 @@ export const Pagination = ({
 }: Props) => {
   const pageSizes = ['10', '20', '30', '50', `${totalCount}`]
 
+  const { t } = useTranslation()
+
   const pageNumbers: number[] = []
 
   for (let i = 1; i <= pagesCount; i++) {
     pageNumbers.push(i)
   }
 
-  const isDisabledLeftArrow = currentPage === 1
-  const isDisabledRightArrow = currentPage === pageNumbers.length
+  const isDisabledLeftArrow = currentPage === 1 || totalCount === 0
+  const isDisabledRightArrow = currentPage === pageNumbers.length || totalCount === 0
 
   return (
     <div className={s.container}>
@@ -68,7 +71,7 @@ export const Pagination = ({
       </Button>
       <div className={s.select}>
         <Typography color={'light'} variant={'regular14'}>
-          Show
+          {t.usersList.show}
         </Typography>
         <SelectComponent
           className={s.selectComponent}
@@ -77,7 +80,7 @@ export const Pagination = ({
           selectItems={pageSizes}
         ></SelectComponent>
         <Typography color={'light'} variant={'regular14'}>
-          on page
+          {t.usersList.onPage}
         </Typography>
       </div>
     </div>
