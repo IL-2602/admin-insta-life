@@ -4,6 +4,10 @@
   max-width: 644px;
   margin-right: 94px;
 
+  input {
+    padding-bottom: 4px;
+  }
+
   input::placeholder {
     font: var(--font-regular-16);
   }

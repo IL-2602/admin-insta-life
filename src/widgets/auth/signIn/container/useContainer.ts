@@ -1,8 +1,11 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
+import { useAppDispatch } from '@/app/store/hooks/useAppDispatch'
 import { LOGIN_ADMIN } from '@/services/queries/admin'
+import { GET_USERS } from '@/services/queries/users'
+import { usersSlice } from '@/services/usersService/store/slice/users.slice'
 import { ROUTES } from '@/shared/constans/routes'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import saveToLocalStorage from '@/shared/utils/localStorage/saveToLocalStorage'
@@ -14,8 +17,7 @@ import { z } from 'zod'
 export const useContainer = () => {
   const { t } = useTranslation()
   const router = useRouter()
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const dispatch = useAppDispatch()
 
   const signInSchema = z.object({
     email: z.string(),
@@ -26,7 +28,7 @@ export const useContainer = () => {
 
   const {
     control,
-    formState: { errors },
+    formState: {},
     watch,
   } = useForm<signInFormSchema>({
     defaultValues: {
@@ -37,18 +39,25 @@ export const useContainer = () => {
     resolver: zodResolver(signInSchema),
   })
 
-  const [login, { loading }] = useMutation(LOGIN_ADMIN)
-
   const email = watch('email')
   const password = watch('password')
+
+  const [login, { loading }] = useMutation(LOGIN_ADMIN)
 
   const isDisabled = !email || !password || loading
 
   const onSubmit = async (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault()
 
+    dispatch(usersSlice.actions.searchUsers(''))
+
     const { data } = await login({
-      context: { base64password: btoa(`${email}:${password}`) },
+      refetchQueries: [
+        {
+          context: { base64password: btoa(`${email}:${password}`) },
+          query: GET_USERS,
+        },
+      ],
       variables: {
         email,
         password,
@@ -58,6 +67,7 @@ export const useContainer = () => {
     if (data.loginAdmin.logged) {
       saveToLocalStorage('base64credentials', btoa(`${email}:${password}`))
       saveToLocalStorage('isAuthenticated', true)
+
       void router.push(ROUTES.USERS)
     } else {
       toast.error(t.auth.error, {
@@ -72,5 +82,5 @@ export const useContainer = () => {
     }
   }
 
-  return { control, isDisabled, isLoggedIn, loading, onSubmit, t }
+  return { control, isDisabled, loading, onSubmit, t }
 }
