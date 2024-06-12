@@ -13,4 +13,11 @@ export const ru = {
     statistics: 'Статистика',
     usersList: 'Список пользователей',
   },
+  usersList: {
+    dateAdded: 'Дата создания',
+    onPage: 'на странице',
+    profileLink: 'Ссылка на профиль',
+    searchNotFound: 'Такого username не существует',
+    show: 'Показать',
+  },
 }
