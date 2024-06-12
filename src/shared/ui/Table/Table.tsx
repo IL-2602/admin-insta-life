@@ -1,6 +1,10 @@
 import { ComponentProps, ComponentPropsWithoutRef, FC } from 'react'
 
+import { ChevronSortDown } from '@/shared/assets/icons/ChevronSortDown'
+import { ChevronsSort } from '@/shared/assets/icons/ChevronsSort'
+import { Button } from '@/shared/ui/Button'
 import { Typography } from '@/shared/ui/Typography'
+import { ChevronDownIcon, ChevronUpIcon } from '@storybook/icons'
 import { clsx } from 'clsx'
 
 import s from './Table.module.scss'
@@ -8,7 +12,15 @@ export type RootProps = ComponentPropsWithoutRef<'table'>
 export type HeadProps = ComponentPropsWithoutRef<'thead'>
 export type BodyProps = ComponentPropsWithoutRef<'tbody'>
 export type RowProps = ComponentPropsWithoutRef<'tr'>
-export type HeadCellProps = ComponentPropsWithoutRef<'th'>
+export type HeadCellProps = {
+  name?: string
+  onSort?: (sort: HeadCellSort) => void
+  sort?: HeadCellSort
+} & ComponentPropsWithoutRef<'th'>
+export type HeadCellSort = {
+  direction: 'Asc' | 'Desc'
+  key: string
+}
 export type CellProps = ComponentPropsWithoutRef<'td'>
 
 export const Root: FC<RootProps> = ({ className, ...rest }) => {
@@ -35,12 +47,61 @@ export const Row: FC<RowProps> = props => {
   return <tr {...props} />
 }
 
-export const HeadCell: FC<HeadCellProps> = ({ className, ...rest }) => {
+export const HeadCell: FC<HeadCellProps> = ({
+  children,
+  className,
+  name,
+  onSort,
+  sort,
+  ...rest
+}) => {
   const classNames = {
     headCell: clsx(className, s.headCell),
   }
 
-  return <th className={classNames.headCell} {...rest} />
+  const onClickSortHandler = (key: string) => {
+    if (!onSort) {
+      return
+    }
+
+    return onSort({
+      direction: sort?.direction === 'Asc' ? 'Desc' : 'Asc',
+      key,
+    })
+  }
+
+  const sortIcon = () => {
+    if (sort?.key === name) {
+      return sort?.direction === 'Desc' ? (
+        <ChevronSortDown />
+      ) : (
+        <ChevronSortDown className={s.chevronUp} />
+      )
+    }
+
+    return <ChevronsSort />
+  }
+
+  if (sort && name) {
+    return (
+      <th className={classNames.headCell} {...rest}>
+        <Button
+          className={s.sortableButton}
+          onClick={() => onClickSortHandler(name)}
+          variant={'noStyle'}
+        >
+          <Typography variant={'bold14'}>{children}</Typography>
+          {sortIcon()}
+        </Button>
+      </th>
+    )
+  }
+
+  return (
+    <th className={classNames.headCell} {...rest}>
+      {children}
+    </th>
+  )
 }
 
 export const Cell: FC<CellProps> = ({ className, ...rest }) => {

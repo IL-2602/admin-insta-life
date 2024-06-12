@@ -1,6 +1,5 @@
 import { memo } from 'react'
 
-import { Button } from '@/shared/ui/Button'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Spinner } from '@/shared/ui/Spinner'
 import { Table } from '@/shared/ui/Table'
@@ -16,8 +15,10 @@ export const UsersList = memo(
     currentSize,
     handlePageNumber,
     handlePageSize,
+    handleSortTable,
     isLoading,
     pagination,
+    sort,
     users,
   }: UsersListProps) => {
     return (
@@ -31,13 +32,13 @@ export const UsersList = memo(
           <Table.Head>
             <Table.Row>
               <Table.HeadCell>User ID</Table.HeadCell>
-              <Table.HeadCell>
-                <Button className={s.sortableButton} variant={'noStyle'}>
-                  User Name
-                </Button>
+              <Table.HeadCell name={'userName'} onSort={handleSortTable} sort={sort}>
+                User Name
               </Table.HeadCell>
               <Table.HeadCell>Profile link</Table.HeadCell>
-              <Table.HeadCell>Date added</Table.HeadCell>
+              <Table.HeadCell name={'createdAt'} onSort={handleSortTable} sort={sort}>
+                Date added
+              </Table.HeadCell>
             </Table.Row>
           </Table.Head>
 
