@@ -22,6 +22,12 @@ export const UNBAN_USER = gql`
   }
 `
 
+export const REMOVE_USER = gql`
+  mutation RemoveUser($userId: Int!) {
+    removeUser(userId: $userId)
+  }
+`
+
 export const GET_USERS = gql`
   query GetUsers(
     $pageSize: Int
