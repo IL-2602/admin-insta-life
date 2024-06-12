@@ -11,15 +11,7 @@ const HomePage = () => {
         <meta content={'width=device-width, initial-scale=1'} name={'viewport'} />
         <link href={'/favicon.ico'} rel={'icon'} />
       </Head>
-      <main>
-        <iframe
-          allowFullScreen
-          className={'giphy-embed'}
-          height={'400'}
-          src={'https://giphy.com/embed/gEKz4VLX7fQlsl8SFE'}
-          width={'400'}
-        ></iframe>
-      </main>
+      <main>Home page</main>
     </>
   )
 }

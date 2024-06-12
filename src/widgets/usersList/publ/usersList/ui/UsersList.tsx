@@ -3,11 +3,14 @@ import { memo } from 'react'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Spinner } from '@/shared/ui/Spinner'
 import { Table } from '@/shared/ui/Table'
+import { Typography } from '@/shared/ui/Typography'
 import { SearchUser } from '@/widgets/usersList/local/searchUser'
 import { SortUsers } from '@/widgets/usersList/local/sortUsers'
 import { UsersListProps } from '@/widgets/usersList/publ/usersList/container'
 
 import s from './UsersList.module.scss'
+
+import { FilterUsers } from '../../../local/filterUsers'
 
 export const UsersList = memo(
   ({
@@ -19,13 +22,15 @@ export const UsersList = memo(
     isLoading,
     pagination,
     sort,
+    state,
+    t,
     users,
   }: UsersListProps) => {
     return (
       <div className={s.container}>
         <div className={s.searchWrapper}>
           <SearchUser.widget />
-          <SortUsers.widget />
+          <FilterUsers.widget />
         </div>
 
         <Table.Root>
@@ -35,14 +40,24 @@ export const UsersList = memo(
               <Table.HeadCell name={'userName'} onSort={handleSortTable} sort={sort}>
                 User Name
               </Table.HeadCell>
-              <Table.HeadCell>Profile link</Table.HeadCell>
+              <Table.HeadCell>{t.usersList.profileLink}</Table.HeadCell>
               <Table.HeadCell name={'createdAt'} onSort={handleSortTable} sort={sort}>
-                Date added
+                {t.usersList.dateAdded}
               </Table.HeadCell>
             </Table.Row>
           </Table.Head>
 
           <Table.Body>
+            {users?.length === 0 && state.searchByUsername && (
+              <Table.Row>
+                <Table.Cell colSpan={4}>
+                  <Typography className={s.searchNotFound} color={'form'}>
+                    {t.usersList.searchNotFound}
+                  </Typography>
+                </Table.Cell>
+              </Table.Row>
+            )}
+
             {isLoading ? (
               <Table.Row>
                 <Table.Cell colSpan={4}>

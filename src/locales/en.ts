@@ -13,4 +13,11 @@ export const en = {
     statistics: 'Statistics',
     usersList: 'Users list',
   },
+  usersList: {
+    dateAdded: 'Date added',
+    onPage: 'on page',
+    profileLink: 'Profile link',
+    searchNotFound: 'This username does not exist',
+    show: 'Show',
+  },
 }
