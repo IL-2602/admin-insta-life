@@ -17,8 +17,10 @@ export const UsersList = memo(
     currentSize,
     handlePageNumber,
     handlePageSize,
+    handleSortTable,
     isLoading,
     pagination,
+    sort,
     state,
     t,
     users,
@@ -34,9 +36,13 @@ export const UsersList = memo(
           <Table.Head>
             <Table.Row>
               <Table.HeadCell>User ID</Table.HeadCell>
-              <Table.HeadCell>Username</Table.HeadCell>
+              <Table.HeadCell name={'userName'} onSort={handleSortTable} sort={sort}>
+                User Name
+              </Table.HeadCell>
               <Table.HeadCell>{t.usersList.profileLink}</Table.HeadCell>
-              <Table.HeadCell>{t.usersList.dateAdded}</Table.HeadCell>
+              <Table.HeadCell name={'createdAt'} onSort={handleSortTable} sort={sort}>
+                {t.usersList.dateAdded}
+              </Table.HeadCell>
             </Table.Row>
           </Table.Head>
 
