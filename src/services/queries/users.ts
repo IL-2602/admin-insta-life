@@ -1,18 +1,28 @@
 import { gql } from '@apollo/client'
 
 export const GET_USER = gql`
-  query GetUser($userId: Int!) {
+  query getUser($userId: Int!) {
     getUser(userId: $userId) {
       id
       userName
       email
       createdAt
+      profile {
+        firstName
+        lastName
+        avatars {
+          url
+          width
+          height
+          fileSize
+        }
+      }
     }
   }
 `
 
 export const GET_USERS = gql`
-  query GetUsers(
+  query getUsers(
     $pageSize: Int
     $pageNumber: Int
     $sortBy: String
@@ -34,10 +44,6 @@ export const GET_USERS = gql`
         userBan {
           reason
           createdAt
-        }
-        profile {
-          lastName
-          firstName
         }
         createdAt
         email
