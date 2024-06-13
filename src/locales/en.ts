@@ -6,6 +6,13 @@ export const en = {
     submit: 'Sign in',
     title: 'Sign in',
   },
+  payments: {
+    amount: 'Amount, $',
+    dateOfPayment: 'Date of Payment',
+    dateOfSubscription: 'End date of subscription',
+    paymentType: 'Payment Type',
+    subscriptionType: 'Subscription Type',
+  },
   sidebar: {
     logout: 'Log out',
     paymentsList: 'Payments list',
