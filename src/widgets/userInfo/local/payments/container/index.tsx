@@ -4,6 +4,6 @@ import { useContainer } from '@/widgets/userInfo/local/payments/container/useCon
 
 import { Payments } from '../ui/Payments'
 
-export const Container: FC<PaymentsProps> = () => <Payments {...useContainer()} />
+export const Container: FC = () => <Payments {...useContainer()} />
 
 export type PaymentsProps = ReturnType<typeof useContainer>

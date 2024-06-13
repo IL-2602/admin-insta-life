@@ -4,6 +4,6 @@ import { useContainer } from '@/widgets/userInfo/local/userInfoHeader/container/
 
 import { UserInfoHeader } from '../ui/UserInfoHeader'
 
-export const Container: FC<UserInfoHeaderProps> = () => <UserInfoHeader {...useContainer()} />
+export const Container: FC = () => <UserInfoHeader {...useContainer()} />
 
 export type UserInfoHeaderProps = ReturnType<typeof useContainer>
