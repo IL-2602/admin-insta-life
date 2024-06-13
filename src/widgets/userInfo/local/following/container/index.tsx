@@ -4,6 +4,6 @@ import { useContainer } from '@/widgets/userInfo/local/following/container/useCo
 
 import { Following } from '../ui/Following'
 
-export const Container: FC<FollowingProps> = () => <Following {...useContainer()} />
+export const Container: FC = () => <Following {...useContainer()} />
 
 export type FollowingProps = ReturnType<typeof useContainer>

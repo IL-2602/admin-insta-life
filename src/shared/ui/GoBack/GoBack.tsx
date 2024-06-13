@@ -31,7 +31,7 @@ export const GoBack = forwardRef<ElementRef<typeof Button>, Props>(({ className,
     <Button className={goBackClassName.root} onClick={onBack} variant={'link'}>
       <div className={goBackClassName.wrapper}>
         <ArrowBack />
-        <Typography variant={'regular14'}>{title}</Typography>
+        <Typography variant={'medium14'}>{title}</Typography>
       </div>
     </Button>
   )

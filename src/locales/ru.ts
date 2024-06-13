@@ -13,6 +13,10 @@ export const ru = {
     statistics: 'Статистика',
     usersList: 'Список пользователей',
   },
+  userInfo: {
+    backToUsersList: 'Назад к списку пользователей',
+    creationDate: 'Дата создания профиля',
+  },
   usersList: {
     dateAdded: 'Дата создания',
     onPage: 'на странице',

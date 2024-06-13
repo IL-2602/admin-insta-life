@@ -4,6 +4,6 @@ import { useContainer } from '@/widgets/userInfo/local/uploaded/container/useCon
 
 import { Uploaded } from '../ui/Uploaded'
 
-export const Container: FC<UploadedProps> = () => <Uploaded {...useContainer()} />
+export const Container: FC = () => <Uploaded {...useContainer()} />
 
 export type UploadedProps = ReturnType<typeof useContainer>

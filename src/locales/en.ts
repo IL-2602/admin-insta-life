@@ -13,6 +13,10 @@ export const en = {
     statistics: 'Statistics',
     usersList: 'Users list',
   },
+  userInfo: {
+    backToUsersList: 'Back to Users List',
+    creationDate: 'Profile Creation Date',
+  },
   usersList: {
     dateAdded: 'Date added',
     onPage: 'on page',
