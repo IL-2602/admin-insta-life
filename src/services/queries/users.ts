@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
 export const GET_USER = gql`
-  query getUser($userId: Int!) {
+  query GetUser($userId: Int!) {
     getUser(userId: $userId) {
       id
       userName
@@ -22,7 +22,7 @@ export const GET_USER = gql`
 `
 
 export const GET_USERS = gql`
-  query getUsers(
+  query GetUsers(
     $pageSize: Int
     $pageNumber: Int
     $sortBy: String
