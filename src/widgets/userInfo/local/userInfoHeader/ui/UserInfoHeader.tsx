@@ -2,7 +2,6 @@ import { memo } from 'react'
 
 import { ROUTES } from '@/shared/constans/routes'
 import { GoBack } from '@/shared/ui/GoBack'
-import { Spinner } from '@/shared/ui/Spinner'
 import { Typography } from '@/shared/ui/Typography'
 import { UserInfoHeaderProps } from '@/widgets/userInfo/local/userInfoHeader/container'
 import Image from 'next/image'
@@ -13,11 +12,7 @@ import noPhoto from '../../../../../../public/noPhoto.svg'
 
 export const UserInfoHeader = memo(({ loading, t, user }: UserInfoHeaderProps) => {
   if (loading) {
-    return (
-      <div className={s.spinner}>
-        <Spinner />
-      </div>
-    )
+    return null
   }
 
   return (
@@ -28,13 +23,7 @@ export const UserInfoHeader = memo(({ loading, t, user }: UserInfoHeaderProps) =
           className={`${s.imageWrapper} ${user?.profile.avatars && user?.profile.avatars[0] === undefined ? s.border : ''}`}
         >
           {user?.profile.avatars && user.profile.avatars[0] ? (
-            <Image
-              alt={'avatar'}
-              fetchPriority={undefined}
-              height={60}
-              src={user.profile.avatars[0].url!}
-              width={60}
-            />
+            <Image alt={'avatar'} height={60} src={user.profile.avatars[0].url!} width={60} />
           ) : (
             <Image alt={'no avatar'} height={30} src={noPhoto} width={30} />
           )}

@@ -42,6 +42,9 @@ export const useContainer = () => {
     },
   })
 
+  const users = data?.getUsers.users
+  const pagination = data?.getUsers.pagination
+
   const handlePageNumber = (pageNumber: number) => {
     setCurrentPage(pageNumber)
 
@@ -52,12 +55,14 @@ export const useContainer = () => {
 
   const handlePageSize = (pageSize: string) => {
     setCurrentSize(+pageSize)
+
+    if (pagination?.pagesCount !== INITIAL_PAGE_NUMBER && currentSize !== pagination?.totalCount) {
+      setCurrentPage(INITIAL_PAGE_NUMBER)
+    }
   }
+
   const handleSortTable = (sort: HeadCellSort | null) =>
     sort ? setSort(sort) : setSort({ direction: 'Desc', key: 'createdAt' })
-
-  const users = data?.getUsers.users
-  const pagination = data?.getUsers.pagination
 
   return {
     currentPage,
