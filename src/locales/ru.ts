@@ -6,6 +6,13 @@ export const ru = {
     submit: 'Войти',
     title: 'Войти',
   },
+  payments: {
+    amount: 'Сумма, $',
+    dateOfPayment: 'Дата оплаты',
+    dateOfSubscription: 'Дата окончания подписки',
+    paymentType: 'Тип оплаты',
+    subscriptionType: 'Тип подписки',
+  },
   sidebar: {
     logout: 'Выйти',
     paymentsList: 'Список оплат',

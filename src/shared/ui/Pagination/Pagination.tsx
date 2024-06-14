@@ -26,13 +26,28 @@ export const Pagination = ({
   pagesCount,
   totalCount,
 }: Props) => {
-  const pageSizes = [
-    '10',
-    '20',
-    '30',
-    '50',
-    `${totalCount > 50 && totalCount < 100 ? totalCount : '100'}`,
-  ]
+  const selectPageSizes = () => {
+    switch (true) {
+      case totalCount <= 20:
+        return ['10', `${totalCount}`]
+      case totalCount > 20 && totalCount <= 30:
+        return ['10', '20', `${totalCount}`]
+      case totalCount > 30 && totalCount <= 40:
+        return ['10', '20', '30', `${totalCount}`]
+      case totalCount > 40 && totalCount <= 50:
+        return ['10', '20', '30', '40', `${totalCount}`]
+      default:
+        return ['10', '20', '30', '40', '50', `${totalCount}`]
+    }
+  }
+
+  // console.log('currentPage: ', currentPage)
+  // console.log('currentSize: ', currentSize)
+  // console.log('pagesCount: ', pagesCount)
+
+  // console.log('totalCount: ', totalCount)
+  // console.log('currentSize: ', currentSize)
+  // console.log('pagesCount: ', pagesCount)
 
   const { t } = useTranslation()
 
@@ -83,7 +98,7 @@ export const Pagination = ({
           className={s.selectComponent}
           currentValue={currentSize}
           onValueChange={handlePageSize}
-          selectItems={pageSizes}
+          selectItems={selectPageSizes()}
         ></SelectComponent>
         <Typography color={'light'} variant={'regular14'}>
           {t.usersList.onPage}
