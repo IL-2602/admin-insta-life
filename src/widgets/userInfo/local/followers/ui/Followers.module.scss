@@ -1,3 +1,14 @@
 .container {
-  display: flex;
+  margin-top: 29px;
+
+  .link {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: inherit;
+
+    &:hover {
+      color: var(--color-primary-100);
+    }
+  }
 }

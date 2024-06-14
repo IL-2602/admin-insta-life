@@ -6,6 +6,12 @@ export const ru = {
     submit: 'Войти',
     title: 'Войти',
   },
+  followers: {
+    followDate: 'Дата подписки',
+    link: 'Ссылка на пролфиль',
+    uId: 'Идентификатор',
+    uName: 'Имя',
+  },
   payments: {
     amount: 'Сумма, $',
     dateOfPayment: 'Дата оплаты',

@@ -6,6 +6,12 @@ export const en = {
     submit: 'Sign in',
     title: 'Sign in',
   },
+  followers: {
+    followDate: 'Follow date',
+    link: 'Profile link',
+    uId: 'User ID',
+    uName: 'User Name',
+  },
   payments: {
     amount: 'Amount, $',
     dateOfPayment: 'Date of Payment',
