@@ -11,4 +11,14 @@
       color: var(--color-primary-100);
     }
   }
+
+  .notFound {
+    text-align: center;
+  }
+
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
