@@ -7,6 +7,7 @@ export const en = {
     title: 'Sign in',
   },
   followers: {
+    empty: 'Follow list is empty',
     followDate: 'Follow date',
     link: 'Profile link',
     uId: 'User ID',

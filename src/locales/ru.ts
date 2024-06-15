@@ -7,6 +7,7 @@ export const ru = {
     title: 'Войти',
   },
   followers: {
+    empty: 'Подписчиков нет',
     followDate: 'Дата подписки',
     link: 'Ссылка на пролфиль',
     uId: 'Идентификатор',
