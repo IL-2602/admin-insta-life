@@ -25,6 +25,12 @@ export const en = {
     creationDate: 'Profile Creation Date',
   },
   usersList: {
+    adminApi: {
+      banUser: 'Ban User',
+      deleteUser: 'Delete User',
+      moreInfo: 'More Information',
+      unbanUser: 'Unban User',
+    },
     dateAdded: 'Date added',
     onPage: 'on page',
     profileLink: 'Profile link',

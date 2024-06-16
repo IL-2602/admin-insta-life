@@ -25,6 +25,12 @@ export const ru = {
     creationDate: 'Дата создания профиля',
   },
   usersList: {
+    adminApi: {
+      banUser: 'Заблокировать пользователя',
+      deleteUser: 'Удалить пользователя',
+      moreInfo: 'Больше информации',
+      unbanUser: 'Разблокироавть пользователя',
+    },
     dateAdded: 'Дата создания',
     onPage: 'на странице',
     profileLink: 'Ссылка на профиль',
