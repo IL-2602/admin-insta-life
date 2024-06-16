@@ -10,7 +10,25 @@ export type GetUserQueryVariables = Types.Exact<{
 
 export type GetUserQuery = {
   __typename?: 'Query'
-  getUser: { __typename?: 'User'; createdAt: any; email: string; id: number; userName: string }
+  getUser: {
+    __typename?: 'User'
+    createdAt: any
+    email: string
+    id: number
+    profile: {
+      __typename?: 'Profile'
+      avatars?: Array<{
+        __typename?: 'Avatar'
+        fileSize?: null | number
+        height?: null | number
+        url?: null | string
+        width?: null | number
+      }> | null
+      firstName?: null | string
+      lastName?: null | string
+    }
+    userName: string
+  }
 }
 
 export type BanUserMutationVariables = Types.Exact<{
@@ -57,7 +75,6 @@ export type GetUsersQuery = {
       createdAt: any
       email: string
       id: number
-      profile: { __typename?: 'Profile'; firstName?: null | string; lastName?: null | string }
       userBan?: { __typename?: 'UserBan'; createdAt: any; reason: string } | null
       userName: string
     }>
@@ -65,12 +82,22 @@ export type GetUsersQuery = {
 }
 
 export const GetUserDocument = gql`
-  query GetUser($userId: Int!) {
+  query getUser($userId: Int!) {
     getUser(userId: $userId) {
       id
       userName
       email
       createdAt
+      profile {
+        firstName
+        lastName
+        avatars {
+          url
+          width
+          height
+          fileSize
+        }
+      }
     }
   }
 `
@@ -242,7 +269,7 @@ export type RemoveUserMutationOptions = Apollo.BaseMutationOptions<
   RemoveUserMutationVariables
 >
 export const GetUsersDocument = gql`
-  query GetUsers(
+  query getUsers(
     $pageSize: Int
     $pageNumber: Int
     $sortBy: String
@@ -264,10 +291,6 @@ export const GetUsersDocument = gql`
         userBan {
           reason
           createdAt
-        }
-        profile {
-          lastName
-          firstName
         }
         createdAt
         email

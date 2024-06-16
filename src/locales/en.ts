@@ -6,12 +6,23 @@ export const en = {
     submit: 'Sign in',
     title: 'Sign in',
   },
+  payments: {
+    amount: 'Amount, $',
+    dateOfPayment: 'Date of Payment',
+    dateOfSubscription: 'End date of subscription',
+    paymentType: 'Payment Type',
+    subscriptionType: 'Subscription Type',
+  },
   sidebar: {
     logout: 'Log out',
     paymentsList: 'Payments list',
     postsList: 'Posts list',
     statistics: 'Statistics',
     usersList: 'Users list',
+  },
+  userInfo: {
+    backToUsersList: 'Back to Users List',
+    creationDate: 'Profile Creation Date',
   },
   usersList: {
     dateAdded: 'Date added',

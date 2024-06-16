@@ -20,4 +20,14 @@
     place-items: center;
     height: 15vh;
   }
+
+  .sortableButton {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px;
+  }
 }

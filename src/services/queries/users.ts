@@ -7,6 +7,16 @@ export const GET_USER = gql`
       userName
       email
       createdAt
+      profile {
+        firstName
+        lastName
+        avatars {
+          url
+          width
+          height
+          fileSize
+        }
+      }
     }
   }
 `
@@ -51,10 +61,6 @@ export const GET_USERS = gql`
         userBan {
           reason
           createdAt
-        }
-        profile {
-          lastName
-          firstName
         }
         createdAt
         email

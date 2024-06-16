@@ -4,6 +4,6 @@ import { useContainer } from '@/widgets/userInfo/publ/userInfo/container/useCont
 
 import { UserInfo } from '../ui/UserInfo'
 
-export const Container: FC<UserInfoProps> = () => <UserInfo {...useContainer()} />
+export const Container: FC = () => <UserInfo {...useContainer()} />
 
 export type UserInfoProps = ReturnType<typeof useContainer>

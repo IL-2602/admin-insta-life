@@ -5,6 +5,7 @@ import { GET_USERS } from '@/services/queries/users'
 import { GetUsersQuery, GetUsersQueryVariables } from '@/services/queries/users.generated'
 import { SortDirection, UserBlockStatus } from '@/services/types'
 import { useTranslation } from '@/shared/hooks/useTranslation'
+import { HeadCellSort } from '@/shared/ui/Table/Table'
 import getFromLocalStorage from '@/shared/utils/localStorage/getFromLocalStorage'
 import {
   INITIAL_PAGE_NUMBER,
@@ -19,6 +20,7 @@ export const useContainer = () => {
 
   const [currentPage, setCurrentPage] = useState<number>(INITIAL_PAGE_NUMBER)
   const [currentSize, setCurrentSize] = useState<number>(INITIAL_PAGE_SIZE)
+  const [sort, setSort] = useState<HeadCellSort>({ direction: 'Asc', key: 'createdAt' })
 
   const state = useAppSelector(state => state.usersReducer)
 
@@ -34,11 +36,14 @@ export const useContainer = () => {
       pageNumber: currentPage,
       pageSize: currentSize,
       searchTerm: state.searchByUsername.trim(),
-      sortBy: 'createdAt',
-      sortDirection: SortDirection.Desc,
+      sortBy: sort.key,
+      sortDirection: SortDirection[sort.direction],
       statusFilter: currentBlockStatus[state.userBlockStatus],
     },
   })
+
+  const users = data?.getUsers.users
+  const pagination = data?.getUsers.pagination
 
   const handlePageNumber = (pageNumber: number) => {
     setCurrentPage(pageNumber)
@@ -50,18 +55,24 @@ export const useContainer = () => {
 
   const handlePageSize = (pageSize: string) => {
     setCurrentSize(+pageSize)
+
+    if (pagination?.pagesCount !== INITIAL_PAGE_NUMBER && currentSize !== pagination?.totalCount) {
+      setCurrentPage(INITIAL_PAGE_NUMBER)
+    }
   }
 
-  const users = data?.getUsers.users
-  const pagination = data?.getUsers.pagination
+  const handleSortTable = (sort: HeadCellSort | null) =>
+    sort ? setSort(sort) : setSort({ direction: 'Desc', key: 'createdAt' })
 
   return {
     currentPage,
     currentSize,
     handlePageNumber,
     handlePageSize,
+    handleSortTable,
     isLoading,
     pagination,
+    sort,
     state,
     t,
     users,
