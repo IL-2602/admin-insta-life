@@ -1,0 +1,1 @@
+export { DeleteUserIcon } from './DeleteUser'
