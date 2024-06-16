@@ -28,6 +28,8 @@ export const Pagination = ({
 }: Props) => {
   const selectPageSizes = () => {
     switch (true) {
+      case totalCount <= 10:
+        return ['10']
       case totalCount <= 20:
         return ['10', `${totalCount}`]
       case totalCount > 20 && totalCount <= 30:

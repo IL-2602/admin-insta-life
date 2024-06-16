@@ -6,6 +6,13 @@ export const en = {
     submit: 'Sign in',
     title: 'Sign in',
   },
+  followers: {
+    empty: 'Follow list is empty',
+    followDate: 'Follow date',
+    link: 'Profile link',
+    uId: 'User ID',
+    uName: 'User Name',
+  },
   payments: {
     amount: 'Amount, $',
     dateOfPayment: 'Date of Payment',
