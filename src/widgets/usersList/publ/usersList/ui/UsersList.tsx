@@ -90,12 +90,14 @@ export const UsersList = memo(
                     <Table.Cell>{user.email}</Table.Cell>
                     <Table.Cell>{new Date(user.createdAt).toLocaleDateString()}</Table.Cell>
                     <Table.Cell>
-                      <UserInteractionAdminApi
-                        banUser={banU}
-                        deleteUser={deleteU}
-                        unbanUser={unbanU}
-                        user={user}
-                      />
+                      <div style={{ cursor: 'pointer' }}>
+                        <UserInteractionAdminApi
+                          banUser={banU}
+                          deleteUser={deleteU}
+                          unbanUser={unbanU}
+                          user={user}
+                        />
+                      </div>
                     </Table.Cell>
                   </Table.Row>
                 )
