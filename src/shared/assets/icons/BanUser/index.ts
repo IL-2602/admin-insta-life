@@ -1,0 +1,1 @@
+export { BanUserIcon } from './BanUser'

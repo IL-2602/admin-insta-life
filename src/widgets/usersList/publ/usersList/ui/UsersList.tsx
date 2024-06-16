@@ -4,6 +4,7 @@ import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Spinner } from '@/shared/ui/Spinner'
 import { Table } from '@/shared/ui/Table'
 import { Typography } from '@/shared/ui/Typography'
+import { UserInteractionAdminApi } from '@/shared/ui/UserInteractionAdminApi/UserInteractionAdminApi'
 import { SearchUser } from '@/widgets/usersList/local/searchUser'
 import { UsersListProps } from '@/widgets/usersList/publ/usersList/container'
 
@@ -13,16 +14,21 @@ import { FilterUsers } from '../../../local/filterUsers'
 
 export const UsersList = memo(
   ({
+    banU,
     currentPage,
     currentSize,
+    deleteU,
     handlePageNumber,
     handlePageSize,
     handleSortTable,
     isLoading,
+    loadingBan,
+    loadingUnban,
     pagination,
     sort,
     state,
     t,
+    unbanU,
     users,
   }: UsersListProps) => {
     return (
@@ -57,7 +63,7 @@ export const UsersList = memo(
               </Table.Row>
             )}
 
-            {isLoading ? (
+            {loadingBan && loadingUnban && isLoading ? (
               <Table.Row>
                 <Table.Cell colSpan={4}>
                   <div className={s.spinner}>
@@ -73,6 +79,14 @@ export const UsersList = memo(
                     <Table.Cell>{user.userName}</Table.Cell>
                     <Table.Cell>{user.email}</Table.Cell>
                     <Table.Cell>{new Date(user.createdAt).toLocaleDateString()}</Table.Cell>
+                    <Table.Cell>
+                      <UserInteractionAdminApi
+                        banUser={banU}
+                        deleteUser={deleteU}
+                        unbanUser={unbanU}
+                        user={user}
+                      />
+                    </Table.Cell>
                   </Table.Row>
                 )
               })
