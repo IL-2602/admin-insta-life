@@ -30,4 +30,14 @@
 
     padding: 10px;
   }
+
+  .tableCellField {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .tableCellFieldIdIcon {
+    margin-right: 12px;
+  }
 }

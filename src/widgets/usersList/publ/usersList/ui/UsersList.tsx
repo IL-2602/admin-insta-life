@@ -1,5 +1,6 @@
 import { memo } from 'react'
 
+import { DeleteUserIcon } from '@/shared/assets/icons/DeleteUser'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Spinner } from '@/shared/ui/Spinner'
 import { Table } from '@/shared/ui/Table'
@@ -75,7 +76,16 @@ export const UsersList = memo(
               users?.map(user => {
                 return (
                   <Table.Row key={user.id}>
-                    <Table.Cell>{user.id}</Table.Cell>
+                    <Table.Cell className={s.tableCellField}>
+                      {user.userBan ? (
+                        <div className={s.tableCellFieldIdIcon}>
+                          <DeleteUserIcon />
+                        </div>
+                      ) : (
+                        ''
+                      )}
+                      <div className={s.tableCellFieldId}>{user.id}</div>
+                    </Table.Cell>
                     <Table.Cell>{user.userName}</Table.Cell>
                     <Table.Cell>{user.email}</Table.Cell>
                     <Table.Cell>{new Date(user.createdAt).toLocaleDateString()}</Table.Cell>
