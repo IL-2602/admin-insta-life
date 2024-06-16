@@ -297,6 +297,7 @@ export const GetUsersDocument = gql`
       }
       pagination {
         pagesCount
+        // eslint-disable-next-line max-lines
         page
         pageSize
         totalCount

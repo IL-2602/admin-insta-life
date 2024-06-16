@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
-import { BAN_USER, GET_USERS, REMOVE_USER, UNBAN_USER } from '@/services/queries/users'
+import { BAN_USER, GET_USER, GET_USERS, REMOVE_USER, UNBAN_USER } from '@/services/queries/users'
 import {
   BanUserMutation,
   BanUserMutationVariables,
@@ -90,7 +90,11 @@ export const useContainer = () => {
       context: { base64password },
       refetchQueries: [
         {
-          query: GET_USERS,
+          context: { base64password },
+          query: GET_USER,
+          variables: {
+            userId: userId,
+          },
         },
       ],
       variables: { banReason: reason, userId },
@@ -101,7 +105,11 @@ export const useContainer = () => {
       context: { base64password },
       refetchQueries: [
         {
-          query: GET_USERS,
+          context: { base64password },
+          query: GET_USER,
+          variables: {
+            userId: userId,
+          },
         },
       ],
       variables: { userId: userId },
@@ -112,7 +120,11 @@ export const useContainer = () => {
       context: { base64password },
       refetchQueries: [
         {
-          query: GET_USERS,
+          context: { base64password },
+          query: GET_USER,
+          variables: {
+            userId: userId,
+          },
         },
       ],
       variables: { userId: userId },

@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { DeleteUserIcon } from '@/shared/assets/icons/DeleteUser'
+import { BanUserIcon } from '@/shared/assets/icons/BanUser/BanUser'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Spinner } from '@/shared/ui/Spinner'
 import { Table } from '@/shared/ui/Table'
@@ -64,7 +64,7 @@ export const UsersList = memo(
               </Table.Row>
             )}
 
-            {loadingBan && loadingUnban && isLoading ? (
+            {isLoading || loadingBan || loadingUnban ? (
               <Table.Row>
                 <Table.Cell colSpan={4}>
                   <div className={s.spinner}>
@@ -79,7 +79,7 @@ export const UsersList = memo(
                     <Table.Cell className={s.tableCellField}>
                       {user.userBan ? (
                         <div className={s.tableCellFieldIdIcon}>
-                          <DeleteUserIcon />
+                          <BanUserIcon />
                         </div>
                       ) : (
                         ''

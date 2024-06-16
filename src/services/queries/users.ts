@@ -6,6 +6,10 @@ export const GET_USER = gql`
       id
       userName
       email
+      userBan {
+        reason
+        createdAt
+      }
       createdAt
       profile {
         firstName
