@@ -1,12 +1,14 @@
 import { useState } from 'react'
 
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
-import { BAN_USER, GET_USERS, UNBAN_USER } from '@/services/queries/users'
+import { BAN_USER, GET_USERS, REMOVE_USER, UNBAN_USER } from '@/services/queries/users'
 import {
   BanUserMutation,
   BanUserMutationVariables,
   GetUsersQuery,
   GetUsersQueryVariables,
+  RemoveUserMutation,
+  RemoveUserMutationVariables,
   UnbanUserMutation,
   UnbanUserMutationVariables,
 } from '@/services/queries/users.generated'
@@ -56,6 +58,10 @@ export const useContainer = () => {
     UnbanUserMutation,
     UnbanUserMutationVariables
   >(UNBAN_USER)
+  const [removeUser, { loading: loadingRemoveUser }] = useMutation<
+    RemoveUserMutation,
+    RemoveUserMutationVariables
+  >(REMOVE_USER)
 
   const users = data?.getUsers.users
   const pagination = data?.getUsers.pagination
@@ -89,7 +95,6 @@ export const useContainer = () => {
       ],
       variables: { banReason: reason, userId },
     })
-    console.log('BAN USER : ', userId, reason)
   }
   const unbanU = async (userId: number) => {
     unbanUser({
@@ -101,11 +106,17 @@ export const useContainer = () => {
       ],
       variables: { userId: userId },
     })
-
-    console.log('UNBAN USER : ', userId)
   }
-  const deleteU = (id: number) => {
-    console.log('DELETE USER : ', id)
+  const deleteU = (userId: number) => {
+    removeUser({
+      context: { base64password },
+      refetchQueries: [
+        {
+          query: GET_USERS,
+        },
+      ],
+      variables: { userId: userId },
+    })
   }
 
   return {
@@ -118,6 +129,7 @@ export const useContainer = () => {
     handleSortTable,
     isLoading,
     loadingBan,
+    loadingRemoveUser,
     loadingUnban,
     pagination,
     sort,
