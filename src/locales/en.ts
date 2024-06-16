@@ -26,10 +26,10 @@ export const en = {
   },
   usersList: {
     adminApi: {
-      banUser: 'Ban User',
+      banUser: 'Ban in the system',
       deleteUser: 'Delete User',
       moreInfo: 'More Information',
-      unbanUser: 'Unban User',
+      unbanUser: 'Ban in the system',
     },
     dateAdded: 'Date added',
     onPage: 'on page',
