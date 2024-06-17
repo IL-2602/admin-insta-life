@@ -32,8 +32,8 @@ export const useContainer = () => {
     watch,
   } = useForm<signInFormSchema>({
     defaultValues: {
-      email: 'admin@gmail.com',
-      password: 'admin',
+      email: '',
+      password: '',
     },
     mode: 'onSubmit',
     resolver: zodResolver(signInSchema),
