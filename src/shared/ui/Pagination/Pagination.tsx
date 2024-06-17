@@ -41,14 +41,6 @@ export const Pagination = ({
     }
   }
 
-  // console.log('currentPage: ', currentPage)
-  // console.log('currentSize: ', currentSize)
-  // console.log('pagesCount: ', pagesCount)
-
-  // console.log('totalCount: ', totalCount)
-  // console.log('currentSize: ', currentSize)
-  // console.log('pagesCount: ', pagesCount)
-
   const { t } = useTranslation()
 
   const pageNumbers: number[] = []
