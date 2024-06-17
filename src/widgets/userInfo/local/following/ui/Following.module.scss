@@ -1,3 +1,32 @@
 .container {
   display: flex;
+  flex-direction: column;
+  margin-top: 36px;
+
+  .link {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: inherit;
+
+    &:hover {
+      color: var(--color-primary-100);
+    }
+  }
+
+  .notFound {
+    text-align: center;
+  }
+}
+
+.empty {
+  margin-top: 5vh;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.spinner {
+  display: grid;
+  place-items: center;
+  height: 50vh;
 }

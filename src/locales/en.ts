@@ -11,7 +11,7 @@ export const en = {
     followDate: 'Follow date',
     link: 'Profile link',
     uId: 'User ID',
-    uName: 'User Name',
+    uName: 'Username',
   },
   payments: {
     amount: 'Amount, $',

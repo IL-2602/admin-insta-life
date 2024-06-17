@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { ROUTES } from '@/shared/constans/routes'
+import { ROUTES } from '@/shared/constants/routes'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Spinner } from '@/shared/ui/Spinner'
 import { Table } from '@/shared/ui/Table'
@@ -80,14 +80,18 @@ export const Followers = memo(
             )}
           </Table.Body>
         </Table.Root>
-        <Pagination
-          currentPage={currentPage}
-          currentSize={currentSize.toString()}
-          handlePageNumber={handleNextPage}
-          handlePageSize={handlePageSize}
-          pagesCount={paginationPagesCount!}
-          totalCount={paginationTotalCount!}
-        />
+        {followers?.length !== 0 ? (
+          <Pagination
+            currentPage={currentPage}
+            currentSize={currentSize.toString()}
+            handlePageNumber={handleNextPage}
+            handlePageSize={handlePageSize}
+            pagesCount={paginationPagesCount!}
+            totalCount={paginationTotalCount!}
+          />
+        ) : (
+          ''
+        )}
       </>
     )
   }
