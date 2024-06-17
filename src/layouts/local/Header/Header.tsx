@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { ROUTES } from '@/shared/constans/routes'
+import { ROUTES } from '@/shared/constants/routes'
 import { LangSwitcher } from '@/shared/ui/LangSwitcher'
 import { Typography } from '@/shared/ui/Typography'
 import clsx from 'clsx'

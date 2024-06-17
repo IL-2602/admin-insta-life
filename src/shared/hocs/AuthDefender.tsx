@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { NextPageWithLayout } from '@/pages/_app'
-import { ROUTES } from '@/shared/constans/routes'
+import { ROUTES } from '@/shared/constants/routes'
 import { Spinner } from '@/shared/ui/Spinner'
 import getFromLocalStorage from '@/shared/utils/localStorage/getFromLocalStorage'
 import { AppProps } from 'next/app'
