@@ -6,7 +6,7 @@ import getFromLocalStorage from "@/shared/utils/localStorage/getFromLocalStorage
 import { NextPage } from 'next'
 
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
-  const [isAuth, setIsAuth] = useState<boolean | null>(false)
+  const [isAuth, setIsAuth] = useState<boolean | null>(null)
 
   const isAuthenticated = getFromLocalStorage('isAuthenticated', null)
 
@@ -17,6 +17,10 @@ const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
   }
 
   }, [isAuthenticated]);
+
+  if(!isAuth) {
+    return
+  }
 
   return isAuth ? <AuthLayout>{children}</AuthLayout> : <DefaultLayout>{children}</DefaultLayout>
 }
