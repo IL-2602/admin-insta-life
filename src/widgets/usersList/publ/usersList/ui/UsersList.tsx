@@ -47,7 +47,7 @@ export const UsersList = memo(
                 User Name
               </Table.HeadCell>
               <Table.HeadCell>{t.usersList.profileLink}</Table.HeadCell>
-              <Table.HeadCell name={'createdAt'} onSort={handleSortTable} sort={sort}>
+              <Table.HeadCell colSpan={2} name={'createdAt'} onSort={handleSortTable} sort={sort}>
                 {t.usersList.dateAdded}
               </Table.HeadCell>
             </Table.Row>
@@ -76,15 +76,11 @@ export const UsersList = memo(
               users?.map(user => {
                 return (
                   <Table.Row key={user.id}>
-                    <Table.Cell className={s.tableCellField}>
-                      {user.userBan ? (
-                        <div className={s.tableCellFieldIdIcon}>
-                          <BanUserIcon />
-                        </div>
-                      ) : (
-                        ''
-                      )}
-                      <div className={s.tableCellFieldId}>{user.id}</div>
+                    <Table.Cell>
+                      <div className={s.tableCellField}>
+                        {user.userBan ? <BanUserIcon /> : ''}
+                        <div className={s.tableCellFieldId}>{user.id}</div>
+                      </div>
                     </Table.Cell>
                     <Table.Cell>{user.userName}</Table.Cell>
                     <Table.Cell>{user.email}</Table.Cell>
