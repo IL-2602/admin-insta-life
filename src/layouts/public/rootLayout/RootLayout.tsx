@@ -18,10 +18,6 @@ const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
 
   }, [isAuthenticated]);
 
-  if(!isAuth) {
-    return
-  }
-
   return isAuth ? <AuthLayout>{children}</AuthLayout> : <DefaultLayout>{children}</DefaultLayout>
 }
 
