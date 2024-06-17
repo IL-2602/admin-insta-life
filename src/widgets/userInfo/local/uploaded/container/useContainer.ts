@@ -74,7 +74,7 @@ export const useContainer = () => {
         }
       }
     })()
-  }, [inView, fetchMore, userPosts])
+  }, [inView])
 
   const isLoading = isInitialLoading || isMoreLoading
 
