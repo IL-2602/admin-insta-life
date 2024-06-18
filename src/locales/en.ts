@@ -6,6 +6,10 @@ export const en = {
     submit: 'Sign in',
     title: 'Sign in',
   },
+  buttons: {
+    no: 'No',
+    yes: 'Yes',
+  },
   payments: {
     amount: 'Amount, $',
     dateOfPayment: 'Date of Payment',
@@ -27,9 +31,15 @@ export const en = {
   usersList: {
     adminApi: {
       banUser: 'Ban in the system',
+      banUserText: 'Are you sure to ban this user,',
+      banUserTitle: 'Ban User',
       deleteUser: 'Delete User',
+      deleteUserText: 'Are you sure to delete user',
+      deleteUserTitle: 'Delete User',
       moreInfo: 'More Information',
       unbanUser: 'Ban in the system',
+      unbanUserText: 'Are you sure to unban this user,',
+      unbanUserTitle: 'Unban User',
     },
     dateAdded: 'Date added',
     onPage: 'on page',

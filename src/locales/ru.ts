@@ -6,6 +6,10 @@ export const ru = {
     submit: 'Войти',
     title: 'Войти',
   },
+  buttons: {
+    no: 'Нет',
+    yes: 'Да',
+  },
   payments: {
     amount: 'Сумма, $',
     dateOfPayment: 'Дата оплаты',
@@ -27,9 +31,15 @@ export const ru = {
   usersList: {
     adminApi: {
       banUser: 'Заблокировать пользователя',
+      banUserText: 'Вы действительно хотите заблокировать пользователя ',
+      banUserTitle: 'Заблокировать пользователя',
       deleteUser: 'Удалить пользователя',
+      deleteUserText: 'Вы действительно хотите удалить пользователя ',
+      deleteUserTitle: 'Удалить пользователя',
       moreInfo: 'Больше информации',
       unbanUser: 'Разблокироавть пользователя',
+      unbanUserText: 'Вы действительно хотите разблокировать пользователя ',
+      unbanUserTitle: 'Разблокировать пользователя',
     },
     dateAdded: 'Дата создания',
     onPage: 'на странице',
