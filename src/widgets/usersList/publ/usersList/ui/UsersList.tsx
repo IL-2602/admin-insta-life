@@ -1,6 +1,7 @@
 import { memo } from 'react'
 
 import { BanUserIcon } from '@/shared/assets/icons/BanUser/BanUser'
+import { ROUTES } from '@/shared/constans/routes'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Spinner } from '@/shared/ui/Spinner'
 import { Table } from '@/shared/ui/Table'
@@ -8,6 +9,7 @@ import { Typography } from '@/shared/ui/Typography'
 import { UserInteractionAdminApi } from '@/shared/ui/UserInteractionAdminApi/UserInteractionAdminApi'
 import { SearchUser } from '@/widgets/usersList/local/searchUser'
 import { UsersListProps } from '@/widgets/usersList/publ/usersList/container'
+import Link from 'next/link'
 
 import s from './UsersList.module.scss'
 
@@ -44,7 +46,7 @@ export const UsersList = memo(
             <Table.Row>
               <Table.HeadCell>User ID</Table.HeadCell>
               <Table.HeadCell name={'userName'} onSort={handleSortTable} sort={sort}>
-                User Name
+                Username
               </Table.HeadCell>
               <Table.HeadCell>{t.usersList.profileLink}</Table.HeadCell>
               <Table.HeadCell colSpan={2} name={'createdAt'} onSort={handleSortTable} sort={sort}>
@@ -83,7 +85,9 @@ export const UsersList = memo(
                       </div>
                     </Table.Cell>
                     <Table.Cell>{user.userName}</Table.Cell>
-                    <Table.Cell>{user.email}</Table.Cell>
+                    <Link className={s.link} href={ROUTES.USER(user.id)}>
+                      <Table.Cell>{user.email}</Table.Cell>
+                    </Link>
                     <Table.Cell>{new Date(user.createdAt).toLocaleDateString()}</Table.Cell>
                     <Table.Cell>
                       <div style={{ cursor: 'pointer' }}>

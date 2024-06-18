@@ -21,7 +21,6 @@ import {
   INITIAL_PAGE_SIZE,
 } from '@/widgets/usersList/publ/usersList/constants/constants'
 import { useMutation, useQuery } from '@apollo/client'
-import { context } from 'esbuild'
 
 export const useContainer = () => {
   const base64password = getFromLocalStorage('base64credentials', '')

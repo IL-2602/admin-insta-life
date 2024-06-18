@@ -4,5 +4,6 @@ export const ROUTES = {
   PAYMENTS: '/payments',
   POSTS: '/posts',
   STATISTICS: '/statistics',
+  USER: (uId: number) => `/users/${uId.toString()}`,
   USERS: '/users',
 }

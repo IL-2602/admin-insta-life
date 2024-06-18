@@ -2,17 +2,23 @@ import { memo } from 'react'
 
 import { ROUTES } from '@/shared/constans/routes'
 import { GoBack } from '@/shared/ui/GoBack'
+import { Spinner } from '@/shared/ui/Spinner'
 import { Typography } from '@/shared/ui/Typography'
 import { UserInfoHeaderProps } from '@/widgets/userInfo/local/userInfoHeader/container'
 import Image from 'next/image'
 
 import s from './UserInfoHeader.module.scss'
+import spinner from '@/shared/ui/Spinner/Spinner.module.scss'
 
 import noPhoto from '../../../../../../public/noPhoto.svg'
 
 export const UserInfoHeader = memo(({ loading, t, user }: UserInfoHeaderProps) => {
   if (loading) {
-    return null
+    return (
+      <div className={spinner.defaultSpinner}>
+        <Spinner />
+      </div>
+    )
   }
 
   return (
