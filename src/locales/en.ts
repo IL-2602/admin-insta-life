@@ -37,6 +37,12 @@ export const en = {
       deleteUserText: 'Are you sure to delete user',
       deleteUserTitle: 'Delete User',
       moreInfo: 'More Information',
+      reasons: {
+        advertisingPlacement: 'Advertising placement',
+        anotherReason: 'Another reason',
+        badBehavior: 'Bad behavior',
+        reasonForBan: 'Reason for ban',
+      },
       unbanUser: 'Ban in the system',
       unbanUserText: 'Are you sure to unban this user,',
       unbanUserTitle: 'Unban User',

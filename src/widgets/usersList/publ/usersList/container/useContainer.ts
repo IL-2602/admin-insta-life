@@ -112,7 +112,7 @@ export const useContainer = () => {
     dispatch(usersActions.closeModal())
     dispatch(usersActions.setBanUnbanRemoveUser({ id: 0, name: '' }))
   }
-  const banU = (userId: number, reason = 'BAD') => {
+  const banU = (userId: number, reason: string) => {
     banUser({
       context: { base64password },
       refetchQueries: [

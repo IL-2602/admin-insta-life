@@ -1,12 +1,15 @@
+import { useState } from 'react'
+
 import { Button } from '@/shared/ui/Button'
 import { Modal } from '@/shared/ui/Modal/v2'
+import { SelectComponent } from '@/shared/ui/SelectComponent'
 import { Typography } from '@/shared/ui/Typography'
 
 import s from './AdminModal.module.scss'
 
 type Props = {
   banUnbanRemoveUser: { id: number; name: string }
-  banUser: (id: number, reason?: string) => void
+  banUser: (id: number, reason: string) => void
   closeModal: () => void
   deleteUser: (id: number) => void
   isBanUserModal: boolean
@@ -27,6 +30,18 @@ export const AdminApiModal = ({
   t,
   unbanUser,
 }: Props) => {
+  const reasonsForBan = [
+    `${t.usersList.adminApi.reasons.reasonForBan}`,
+    `${t.usersList.adminApi.reasons.badBehavior}`,
+    `${t.usersList.adminApi.reasons.advertisingPlacement}`,
+    `${t.usersList.adminApi.reasons.anotherReason}`,
+  ]
+  const [reason, setReason] = useState(reasonsForBan[0])
+
+  const changeReason = (reason: string) => {
+    setReason(reason)
+  }
+
   return (
     <>
       {isBanUserModal && (
@@ -35,11 +50,23 @@ export const AdminApiModal = ({
             <Typography
               variant={'medium16'}
             >{`${t.usersList.adminApi.banUserText} ${banUnbanRemoveUser.name} ?`}</Typography>
+            <div className={s.modalSelect}>
+              <SelectComponent
+                currentValue={reason}
+                fullWidth
+                onValueChange={changeReason}
+                selectItems={reasonsForBan}
+              ></SelectComponent>
+            </div>
             <div className={s.modalButtons}>
               <Button onClick={closeModal} variant={'primary'}>
                 {t.buttons.no}
               </Button>
-              <Button onClick={() => banUser(banUnbanRemoveUser.id)} variant={'outlined'}>
+              <Button
+                disabled={reason === `${t.usersList.adminApi.reasons.reasonForBan}`}
+                onClick={() => banUser(banUnbanRemoveUser.id, reason)}
+                variant={'outlined'}
+              >
                 {t.buttons.yes}
               </Button>
             </div>

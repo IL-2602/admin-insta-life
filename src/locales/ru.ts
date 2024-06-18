@@ -37,6 +37,12 @@ export const ru = {
       deleteUserText: 'Вы действительно хотите удалить пользователя ',
       deleteUserTitle: 'Удалить пользователя',
       moreInfo: 'Больше информации',
+      reasons: {
+        advertisingPlacement: 'Размещение рекламы',
+        anotherReason: 'Другая причина',
+        badBehavior: 'Плохое поведение',
+        reasonForBan: 'Причина блокировки',
+      },
       unbanUser: 'Разблокироавть пользователя',
       unbanUserText: 'Вы действительно хотите разблокировать пользователя ',
       unbanUserTitle: 'Разблокировать пользователя',
