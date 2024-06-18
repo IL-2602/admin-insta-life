@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { useAppDispatch } from '@/app/store/hooks/useAppDispatch'
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { BAN_USER, GET_USER, GET_USERS, REMOVE_USER, UNBAN_USER } from '@/services/queries/users'
 import {
@@ -13,6 +14,7 @@ import {
   UnbanUserMutationVariables,
 } from '@/services/queries/users.generated'
 import { SortDirection, UserBlockStatus } from '@/services/types'
+import { usersActions } from '@/services/usersService/store/slice/users.slice'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { HeadCellSort } from '@/shared/ui/Table/Table'
 import getFromLocalStorage from '@/shared/utils/localStorage/getFromLocalStorage'
@@ -22,15 +24,22 @@ import {
 } from '@/widgets/usersList/publ/usersList/constants/constants'
 import { useMutation, useQuery } from '@apollo/client'
 
+export type ModalType = 'BAN' | 'REMOVE' | 'UNBAN'
+
 export const useContainer = () => {
   const base64password = getFromLocalStorage('base64credentials', '')
 
+  const isBanUserModal = useAppSelector(state => state.usersReducer.isBanUserModal)
+  const isDeleteUserModal = useAppSelector(state => state.usersReducer.isDeleteUserModal)
+  const isUnbanUserModal = useAppSelector(state => state.usersReducer.isUnbanUserModal)
+  const banUnbanRemoveUser = useAppSelector(state => state.usersReducer.banUnbanRemoveUser)
   const { t } = useTranslation()
 
   const [currentPage, setCurrentPage] = useState<number>(INITIAL_PAGE_NUMBER)
   const [currentSize, setCurrentSize] = useState<number>(INITIAL_PAGE_SIZE)
   const [sort, setSort] = useState<HeadCellSort>({ direction: 'Asc', key: 'createdAt' })
 
+  const dispatch = useAppDispatch()
   const state = useAppSelector(state => state.usersReducer)
 
   const currentBlockStatus: Record<string, UserBlockStatus> = {
@@ -81,9 +90,28 @@ export const useContainer = () => {
     }
   }
 
+  const closeModal = () => {
+    dispatch(usersActions.closeModal())
+    dispatch(usersActions.setBanUnbanRemoveUser({ id: 0, name: '' }))
+  }
+
+  const openModal = (modal: ModalType, id: number, name: string) => {
+    dispatch(usersActions.setBanUnbanRemoveUser({ id, name }))
+    if (modal === 'BAN') {
+      dispatch(usersActions.isBanUserModal(true))
+    } else if (modal === 'UNBAN') {
+      dispatch(usersActions.isUnbanUserModal(true))
+    } else {
+      dispatch(usersActions.isDeleteUserModal(true))
+    }
+  }
   const handleSortTable = (sort: HeadCellSort | null) =>
     sort ? setSort(sort) : setSort({ direction: 'Desc', key: 'createdAt' })
 
+  const clearModalState = () => {
+    dispatch(usersActions.closeModal())
+    dispatch(usersActions.setBanUnbanRemoveUser({ id: 0, name: '' }))
+  }
   const banU = (userId: number, reason = 'BAD') => {
     banUser({
       context: { base64password },
@@ -92,11 +120,14 @@ export const useContainer = () => {
           context: { base64password },
           query: GET_USER,
           variables: {
+            banReason: reason,
             userId: userId,
           },
         },
       ],
       variables: { banReason: reason, userId },
+    }).then(() => {
+      clearModalState()
     })
   }
   const unbanU = async (userId: number) => {
@@ -112,6 +143,8 @@ export const useContainer = () => {
         },
       ],
       variables: { userId: userId },
+    }).then(() => {
+      clearModalState()
     })
   }
   const deleteU = (userId: number) => {
@@ -127,21 +160,29 @@ export const useContainer = () => {
         },
       ],
       variables: { userId: userId },
+    }).then(() => {
+      clearModalState()
     })
   }
 
   return {
     banU,
+    banUnbanRemoveUser,
+    closeModal,
     currentPage,
     currentSize,
     deleteU,
     handlePageNumber,
     handlePageSize,
     handleSortTable,
+    isBanUserModal,
+    isDeleteUserModal,
     isLoading,
+    isUnbanUserModal,
     loadingBan,
     loadingRemoveUser,
     loadingUnban,
+    openModal,
     pagination,
     sort,
     state,

@@ -2,6 +2,7 @@ import { memo } from 'react'
 
 import { BanUserIcon } from '@/shared/assets/icons/BanUser/BanUser'
 import { ROUTES } from '@/shared/constans/routes'
+import { AdminApiModal } from '@/shared/ui/Modal/AdminApiModal/AdminApiModal'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Spinner } from '@/shared/ui/Spinner'
 import { Table } from '@/shared/ui/Table'
@@ -18,15 +19,21 @@ import { FilterUsers } from '../../../local/filterUsers'
 export const UsersList = memo(
   ({
     banU,
+    banUnbanRemoveUser,
+    closeModal,
     currentPage,
     currentSize,
     deleteU,
     handlePageNumber,
     handlePageSize,
     handleSortTable,
+    isBanUserModal,
+    isDeleteUserModal,
     isLoading,
+    isUnbanUserModal,
     loadingBan,
     loadingUnban,
+    openModal,
     pagination,
     sort,
     state,
@@ -92,9 +99,10 @@ export const UsersList = memo(
                     <Table.Cell>
                       <div style={{ cursor: 'pointer' }}>
                         <UserInteractionAdminApi
-                          banUser={banU}
-                          deleteUser={deleteU}
-                          unbanUser={unbanU}
+                          // banUser={banU}
+                          // deleteUser={deleteU}
+                          openModal={openModal}
+                          // unbanUser={unbanU}
                           user={user}
                         />
                       </div>
@@ -112,6 +120,16 @@ export const UsersList = memo(
           handlePageSize={handlePageSize}
           pagesCount={pagination?.pagesCount!}
           totalCount={pagination?.totalCount!}
+        />
+        <AdminApiModal
+          banUnbanRemoveUser={banUnbanRemoveUser}
+          banUser={banU}
+          closeModal={closeModal}
+          deleteUser={deleteU}
+          isBanUserModal={isBanUserModal}
+          isDeleteUserModal={isDeleteUserModal}
+          isUnbanUserModal={isUnbanUserModal}
+          unbanUser={unbanU}
         />
       </div>
     )

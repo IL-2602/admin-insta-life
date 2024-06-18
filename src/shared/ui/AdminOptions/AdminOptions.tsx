@@ -4,13 +4,12 @@ import { BanUserIcon } from '@/shared/assets/icons/BanUser'
 import { DeleteUserIcon } from '@/shared/assets/icons/DeleteUser'
 import { HorizontalDots } from '@/shared/assets/icons/HorizontalDots/HorizontalDots'
 import { useTranslation } from '@/shared/hooks/useTranslation'
+import { ModalType } from '@/widgets/usersList/publ/usersList/container/useContainer'
 
 import s from './AdminOptions.module.scss'
 
 type Props = {
-  banUser: (id: number) => void
-  deleteUser: (id: number) => void
-  unbanUser: (id: number) => void
+  openModal: (type: ModalType, userId: number, userName: string) => void
   user: any
 }
 
@@ -20,17 +19,19 @@ type AdminOptionsType = {
   title: string
 }
 
-export const AdminOptions = ({ banUser, deleteUser, unbanUser, user }: Props) => {
+export const AdminOptions = ({ openModal, user }: Props) => {
   const { t } = useTranslation()
   const adminOptions: AdminOptionsType[] = [
     {
       icon: user.userBan ? <BanUserIcon /> : <BanUserIcon />,
-      onClick: user.userBan ? () => unbanUser(user.id) : () => banUser(user.id),
+      onClick: user.userBan
+        ? () => openModal('UNBAN', user.id, user.userName)
+        : () => openModal('BAN', user.id, user.userName),
       title: user.userBan ? t.usersList.adminApi.unbanUser : t.usersList.adminApi.banUser,
     },
     {
       icon: <DeleteUserIcon />,
-      onClick: () => deleteUser(user.id),
+      onClick: () => openModal('REMOVE', user.id, user.userName),
       title: t.usersList.adminApi.deleteUser,
     },
     {
