@@ -129,6 +129,7 @@ export const UsersList = memo(
           isBanUserModal={isBanUserModal}
           isDeleteUserModal={isDeleteUserModal}
           isUnbanUserModal={isUnbanUserModal}
+          t={t}
           unbanUser={unbanU}
         />
       </div>

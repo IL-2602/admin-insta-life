@@ -12,6 +12,7 @@ type Props = {
   isBanUserModal: boolean
   isDeleteUserModal: boolean
   isUnbanUserModal: boolean
+  t: any
   unbanUser: (id: number) => void
 }
 
@@ -23,56 +24,57 @@ export const AdminApiModal = ({
   isBanUserModal,
   isDeleteUserModal,
   isUnbanUserModal,
+  t,
   unbanUser,
 }: Props) => {
   return (
     <>
       {isBanUserModal && (
-        <Modal onOpen={closeModal} open title={'Ban User'}>
+        <Modal onOpen={closeModal} open title={`${t.usersList.adminApi.banUserTitle}`}>
           <div className={s.modalContent}>
             <Typography
               variant={'medium16'}
-            >{`Are you sure to ban this user, ${banUnbanRemoveUser.name} ?`}</Typography>
+            >{`${t.usersList.adminApi.banUserText} ${banUnbanRemoveUser.name} ?`}</Typography>
             <div className={s.modalButtons}>
-              <Button onClick={() => banUser(banUnbanRemoveUser.id)} variant={'primary'}>
-                Yes
+              <Button onClick={closeModal} variant={'primary'}>
+                {t.buttons.no}
               </Button>
-              <Button onClick={closeModal} variant={'outlined'}>
-                No
+              <Button onClick={() => banUser(banUnbanRemoveUser.id)} variant={'outlined'}>
+                {t.buttons.yes}
               </Button>
             </div>
           </div>
         </Modal>
       )}
       {isUnbanUserModal && (
-        <Modal onOpen={closeModal} open title={'Unban User'}>
+        <Modal onOpen={closeModal} open title={`${t.usersList.adminApi.unbanUserTitle}`}>
           <div className={s.modalContent}>
             <Typography
               variant={'medium16'}
-            >{`Are you sure to unban this user, ${banUnbanRemoveUser.name} ?`}</Typography>
+            >{`${t.usersList.adminApi.unbanUserText} ${banUnbanRemoveUser.name} ?`}</Typography>
             <div className={s.modalButtons}>
               <Button onClick={() => unbanUser(banUnbanRemoveUser.id)} variant={'primary'}>
-                Yes
+                {t.buttons.yes}
               </Button>
               <Button onClick={closeModal} variant={'outlined'}>
-                No
+                {t.buttons.no}
               </Button>
             </div>
           </div>
         </Modal>
       )}
       {isDeleteUserModal && (
-        <Modal onOpen={closeModal} open title={'Delete User'}>
+        <Modal onOpen={closeModal} open title={`${t.usersList.adminApi.deleteUserTitle}`}>
           <div className={s.modalContent}>
             <Typography
               variant={'medium16'}
-            >{`Are you sure to delete user ${banUnbanRemoveUser.name} ?`}</Typography>
+            >{`${t.usersList.adminApi.deleteUserText} ${banUnbanRemoveUser.name} ?`}</Typography>
             <div className={s.modalButtons}>
-              <Button onClick={() => deleteUser(banUnbanRemoveUser.id)} variant={'primary'}>
-                Yes
+              <Button onClick={closeModal} variant={'primary'}>
+                {t.buttons.no}
               </Button>
-              <Button onClick={closeModal} variant={'outlined'}>
-                No
+              <Button onClick={() => deleteUser(banUnbanRemoveUser.id)} variant={'outlined'}>
+                {t.buttons.yes}
               </Button>
             </div>
           </div>
