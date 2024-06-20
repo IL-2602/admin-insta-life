@@ -93,18 +93,12 @@ export const UsersList = memo(
                     </Table.Cell>
                     <Table.Cell>{user.userName}</Table.Cell>
                     <Link className={s.link} href={ROUTES.USER(user.id)}>
-                      <Table.Cell>{user.email}</Table.Cell>
+                      <Table.Cell>user {user.id}</Table.Cell>
                     </Link>
                     <Table.Cell>{new Date(user.createdAt).toLocaleDateString()}</Table.Cell>
                     <Table.Cell>
                       <div style={{ cursor: 'pointer' }}>
-                        <UserInteractionAdminApi
-                          // banUser={banU}
-                          // deleteUser={deleteU}
-                          openModal={openModal}
-                          // unbanUser={unbanU}
-                          user={user}
-                        />
+                        <UserInteractionAdminApi openModal={openModal} user={user} />
                       </div>
                     </Table.Cell>
                   </Table.Row>

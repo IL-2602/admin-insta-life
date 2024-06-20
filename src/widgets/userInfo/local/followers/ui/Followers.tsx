@@ -68,10 +68,12 @@ export const Followers = memo(
               followers?.map(user => {
                 return (
                   <Table.Row key={user.id}>
-                    <Table.Cell>{user.id}</Table.Cell>
+                    <Table.Cell>{user.userId}</Table.Cell>
                     <Table.Cell>{user.userName}</Table.Cell>
                     <Table.Cell>
-                      <Link className={s.link} href={ROUTES.USER(user.userId)}>{`>>>O,O<<<`}</Link>
+                      <Link className={s.link} href={ROUTES.USER(user.userId)}>
+                        user {user.userId}
+                      </Link>
                     </Table.Cell>
                     <Table.Cell>{new Date(user.createdAt).toLocaleDateString()}</Table.Cell>
                   </Table.Row>

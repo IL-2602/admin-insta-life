@@ -21,6 +21,7 @@ export const en = {
     amount: 'Amount, $',
     dateOfPayment: 'Date of Payment',
     dateOfSubscription: 'End date of subscription',
+    empty: 'Payments list is empty',
     paymentType: 'Payment Type',
     subscriptionType: 'Subscription Type',
   },

@@ -3,6 +3,7 @@ import { memo } from 'react'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Spinner } from '@/shared/ui/Spinner'
 import { Table } from '@/shared/ui/Table'
+import { Typography } from '@/shared/ui/Typography'
 import { PaymentsProps } from '@/widgets/userInfo/local/payments/container'
 
 import s from './Payments.module.scss'
@@ -33,6 +34,16 @@ export const Payments = memo(
             </Table.Row>
           </Table.Head>
           <Table.Body>
+            {payments?.length === 0 && (
+              <Table.Row>
+                <Table.Cell colSpan={5}>
+                  <Typography className={s.notFound} color={'form'}>
+                    {t.payments.empty}
+                  </Typography>
+                </Table.Cell>
+              </Table.Row>
+            )}
+
             {isLoading ? (
               <Table.Row>
                 <Table.Cell colSpan={5}>
