@@ -10,6 +10,13 @@ export const ru = {
     no: 'Нет',
     yes: 'Да',
   },
+  followers: {
+    empty: 'Подписчиков нет',
+    followDate: 'Дата подписки',
+    link: 'Ссылка на профиль',
+    uId: 'Идентификатор',
+    uName: 'Имя',
+  },
   payments: {
     amount: 'Сумма, $',
     dateOfPayment: 'Дата оплаты',

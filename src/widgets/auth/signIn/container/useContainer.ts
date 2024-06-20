@@ -6,7 +6,7 @@ import { useAppDispatch } from '@/app/store/hooks/useAppDispatch'
 import { LOGIN_ADMIN } from '@/services/queries/admin'
 import { GET_USERS } from '@/services/queries/users'
 import { usersSlice } from '@/services/usersService/store/slice/users.slice'
-import { ROUTES } from '@/shared/constans/routes'
+import { ROUTES } from '@/shared/constants/routes'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import saveToLocalStorage from '@/shared/utils/localStorage/saveToLocalStorage'
 import { useMutation } from '@apollo/client'
@@ -32,8 +32,8 @@ export const useContainer = () => {
     watch,
   } = useForm<signInFormSchema>({
     defaultValues: {
-      email: 'admin@gmail.com',
-      password: 'admin',
+      email: '',
+      password: '',
     },
     mode: 'onSubmit',
     resolver: zodResolver(signInSchema),

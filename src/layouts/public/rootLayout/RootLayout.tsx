@@ -6,17 +6,21 @@ import getFromLocalStorage from "@/shared/utils/localStorage/getFromLocalStorage
 import { NextPage } from 'next'
 
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
-  const [isAuth, setIsAuth] = useState<boolean | null>(false)
+  const [isAuth, setIsAuth] = useState<boolean | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const isAuthenticated = getFromLocalStorage('isAuthenticated', null)
+  const isAuthenticated = getFromLocalStorage('isAuthenticated', null);
 
   useEffect(() => {
-
-  if(isAuthenticated) {
-    setIsAuth(isAuthenticated)
-  }
-
+    if(isAuthenticated !== null) {
+      setIsAuth(isAuthenticated);
+    }
+    setIsLoading(false);
   }, [isAuthenticated]);
+
+  if (isLoading) {
+    return null
+  }
 
   return isAuth ? <AuthLayout>{children}</AuthLayout> : <DefaultLayout>{children}</DefaultLayout>
 }

@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { ROUTES } from '@/shared/constans/routes'
+import { ROUTES } from '@/shared/constants/routes'
 import { GoBack } from '@/shared/ui/GoBack'
 import { Spinner } from '@/shared/ui/Spinner'
 import { Typography } from '@/shared/ui/Typography'

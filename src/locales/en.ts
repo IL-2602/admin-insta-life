@@ -10,6 +10,13 @@ export const en = {
     no: 'No',
     yes: 'Yes',
   },
+  followers: {
+    empty: 'Follow list is empty',
+    followDate: 'Follow date',
+    link: 'Profile link',
+    uId: 'User ID',
+    uName: 'Username',
+  },
   payments: {
     amount: 'Amount, $',
     dateOfPayment: 'Date of Payment',
