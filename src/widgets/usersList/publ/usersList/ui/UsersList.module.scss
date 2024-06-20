@@ -30,4 +30,22 @@
 
     padding: 10px;
   }
+
+  .tableCellField {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .link {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: inherit;
+
+    &:hover {
+      color: var(--color-primary-100);
+    }
+  }
 }

@@ -6,6 +6,10 @@ export const ru = {
     submit: 'Войти',
     title: 'Войти',
   },
+  buttons: {
+    no: 'Нет',
+    yes: 'Да',
+  },
   followers: {
     empty: 'Подписчиков нет',
     followDate: 'Дата подписки',
@@ -32,6 +36,24 @@ export const ru = {
     creationDate: 'Дата создания профиля',
   },
   usersList: {
+    adminApi: {
+      banUser: 'Заблокировать пользователя',
+      banUserText: 'Вы действительно хотите заблокировать пользователя ',
+      banUserTitle: 'Заблокировать пользователя',
+      deleteUser: 'Удалить пользователя',
+      deleteUserText: 'Вы действительно хотите удалить пользователя ',
+      deleteUserTitle: 'Удалить пользователя',
+      moreInfo: 'Больше информации',
+      reasons: {
+        advertisingPlacement: 'Размещение рекламы',
+        anotherReason: 'Другая причина',
+        badBehavior: 'Плохое поведение',
+        reasonForBan: 'Причина блокировки',
+      },
+      unbanUser: 'Разблокироавть пользователя',
+      unbanUserText: 'Вы действительно хотите разблокировать пользователя ',
+      unbanUserTitle: 'Разблокировать пользователя',
+    },
     dateAdded: 'Дата создания',
     onPage: 'на странице',
     profileLink: 'Ссылка на профиль',

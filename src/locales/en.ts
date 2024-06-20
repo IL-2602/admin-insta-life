@@ -6,6 +6,10 @@ export const en = {
     submit: 'Sign in',
     title: 'Sign in',
   },
+  buttons: {
+    no: 'No',
+    yes: 'Yes',
+  },
   followers: {
     empty: 'Follow list is empty',
     followDate: 'Follow date',
@@ -32,6 +36,24 @@ export const en = {
     creationDate: 'Profile Creation Date',
   },
   usersList: {
+    adminApi: {
+      banUser: 'Ban in the system',
+      banUserText: 'Are you sure to ban this user,',
+      banUserTitle: 'Ban User',
+      deleteUser: 'Delete User',
+      deleteUserText: 'Are you sure to delete user',
+      deleteUserTitle: 'Delete User',
+      moreInfo: 'More Information',
+      reasons: {
+        advertisingPlacement: 'Advertising placement',
+        anotherReason: 'Another reason',
+        badBehavior: 'Bad behavior',
+        reasonForBan: 'Reason for ban',
+      },
+      unbanUser: 'Ban in the system',
+      unbanUserText: 'Are you sure to unban this user,',
+      unbanUserTitle: 'Unban User',
+    },
     dateAdded: 'Date added',
     onPage: 'on page',
     profileLink: 'Profile link',
