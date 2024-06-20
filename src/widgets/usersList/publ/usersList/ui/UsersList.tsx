@@ -93,7 +93,7 @@ export const UsersList = memo(
                     </Table.Cell>
                     <Table.Cell>{user.userName}</Table.Cell>
                     <Link className={s.link} href={ROUTES.USER(user.id)}>
-                      <Table.Cell>user {user.id}</Table.Cell>
+                      <Table.Cell>{user.email}</Table.Cell>
                     </Link>
                     <Table.Cell>{new Date(user.createdAt).toLocaleDateString()}</Table.Cell>
                     <Table.Cell>
