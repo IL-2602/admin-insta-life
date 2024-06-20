@@ -1,7 +1,7 @@
 import { memo } from 'react'
 
 import { BanUserIcon } from '@/shared/assets/icons/BanUser/BanUser'
-import { ROUTES } from '@/shared/constans/routes'
+import { ROUTES } from '@/shared/constants/routes'
 import { AdminApiModal } from '@/shared/ui/Modal/AdminApiModal/AdminApiModal'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Spinner } from '@/shared/ui/Spinner'

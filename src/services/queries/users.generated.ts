@@ -1,3 +1,4 @@
+/* eslint max-lines: off */
 import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
 
@@ -297,6 +298,7 @@ export const GetUsersDocument = gql`
       }
       pagination {
         pagesCount
+        // eslint-disable-next-line max-lines
         // eslint-disable-next-line max-lines
         page
         pageSize
