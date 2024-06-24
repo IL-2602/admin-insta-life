@@ -8,9 +8,12 @@ import {
 } from '@/services/queries/posts.generated'
 import getFromLocalStorage from '@/shared/utils/localStorage/getFromLocalStorage'
 import { useQuery } from '@apollo/client'
+import { useRouter } from 'next/router'
 
 export const useContainer = () => {
   const base64password = getFromLocalStorage('base64credentials', '')
+
+  const { query } = useRouter()
 
   type PostImages = {
     __typename?: 'ImagePost'
@@ -34,7 +37,7 @@ export const useContainer = () => {
     },
     variables: {
       endCursorId: undefined,
-      userId: 3,
+      userId: +query.id!,
     },
   })
 

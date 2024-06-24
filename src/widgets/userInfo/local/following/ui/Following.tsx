@@ -78,10 +78,9 @@ export const Following = memo(
                     <Table.Cell>{follow.userId}</Table.Cell>
                     <Table.Cell>{follow.userName}</Table.Cell>
                     <Table.Cell>
-                      <Link
-                        className={s.link}
-                        href={ROUTES.USER(follow.userId)}
-                      >{`<<<o_O>>>`}</Link>
+                      <Link className={s.link} href={ROUTES.USER(follow.userId)}>
+                        user {follow.userId}
+                      </Link>
                     </Table.Cell>
                     <Table.Cell>{new Date(follow.createdAt).toLocaleDateString()}</Table.Cell>
                   </Table.Row>

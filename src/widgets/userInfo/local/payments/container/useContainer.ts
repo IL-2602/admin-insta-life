@@ -13,9 +13,11 @@ import {
   INITIAL_PAGE_SIZE,
 } from '@/widgets/usersList/publ/usersList/constants/constants'
 import { useQuery } from '@apollo/client'
+import { useRouter } from 'next/router'
 
 export const useContainer = () => {
   const { t } = useTranslation()
+  const { query } = useRouter()
 
   const base64password = getFromLocalStorage('base64credentials', '')
 
@@ -32,7 +34,7 @@ export const useContainer = () => {
       pageSize: currentSize,
       sortBy: 'createdAt',
       sortDirection: SortDirection.Desc,
-      userId: 3,
+      userId: +query.id!,
     },
   })
 
