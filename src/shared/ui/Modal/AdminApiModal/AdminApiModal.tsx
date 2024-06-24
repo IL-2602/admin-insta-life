@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Button } from '@/shared/ui/Button'
 import { Modal } from '@/shared/ui/Modal/v2'
 import { SelectComponent } from '@/shared/ui/SelectComponent'
+import { TextArea } from '@/shared/ui/TextArea'
 import { Typography } from '@/shared/ui/Typography'
 
 import s from './AdminModal.module.scss'
@@ -37,7 +38,18 @@ export const AdminApiModal = ({
     `${t.usersList.adminApi.reasons.anotherReason}`,
   ]
   const [reason, setReason] = useState(reasonsForBan[0])
+  const [customReason, setCustomReason] = useState('')
 
+  const isAnotherReason = `${t.usersList.adminApi.reasons.anotherReason}` === reason
+  const banReason = () => {
+    if (isAnotherReason && customReason) {
+      banUser(banUnbanRemoveUser.id, customReason)
+      setCustomReason('')
+
+      return
+    }
+    banUser(banUnbanRemoveUser.id, reason)
+  }
   const changeReason = (reason: string) => {
     setReason(reason)
   }
@@ -57,6 +69,13 @@ export const AdminApiModal = ({
                 onValueChange={changeReason}
                 selectItems={reasonsForBan}
               ></SelectComponent>
+              {isAnotherReason && (
+                <TextArea
+                  onChange={e => setCustomReason(e.currentTarget.value)}
+                  style={{ marginTop: '10px', resize: 'none' }}
+                  value={customReason}
+                />
+              )}
             </div>
             <div className={s.modalButtons}>
               <Button onClick={closeModal} variant={'primary'}>
@@ -64,7 +83,7 @@ export const AdminApiModal = ({
               </Button>
               <Button
                 disabled={reason === `${t.usersList.adminApi.reasons.reasonForBan}`}
-                onClick={() => banUser(banUnbanRemoveUser.id, reason)}
+                onClick={banReason}
                 variant={'outlined'}
               >
                 {t.buttons.yes}
