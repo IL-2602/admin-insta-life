@@ -3,8 +3,11 @@ import React, { ReactNode } from 'react'
 import { BanUserIcon } from '@/shared/assets/icons/BanUser'
 import { DeleteUserIcon } from '@/shared/assets/icons/DeleteUser'
 import { HorizontalDots } from '@/shared/assets/icons/HorizontalDots/HorizontalDots'
+import { ROUTES } from '@/shared/constants/routes'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { ModalType } from '@/widgets/usersList/publ/usersList/container/useContainer'
+import { useNavigate } from '@storybook/router'
+import { useRouter } from 'next/router'
 
 import s from './AdminOptions.module.scss'
 
@@ -21,6 +24,7 @@ type AdminOptionsType = {
 
 export const AdminOptions = ({ openModal, user }: Props) => {
   const { t } = useTranslation()
+  const router = useRouter()
   const adminOptions: AdminOptionsType[] = [
     {
       icon: user.userBan ? <BanUserIcon /> : <BanUserIcon />,
@@ -36,7 +40,9 @@ export const AdminOptions = ({ openModal, user }: Props) => {
     },
     {
       icon: <HorizontalDots />,
-      onClick: () => {},
+      onClick: () => {
+        router.push(ROUTES.USER(user.id))
+      },
       title: t.usersList.adminApi.moreInfo,
     },
   ]
