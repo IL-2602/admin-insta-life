@@ -12,8 +12,8 @@ export type SearchUserProps = ReturnType<typeof useContainer>
 //
 // import { useContainer } from '@/widgets/usersList/publ/usersList/container/useContainer'
 //
-// import { UsersList } from '../ui/UsersList'
+// import { PostPhotos } from '../ui/PostPhotos'
 //
-// export const Container: FC = () => <UsersList {...useContainer()} />
+// export const Container: FC = () => <PostPhotos {...useContainer()} />
 //
 // export type UsersListProps = ReturnType<typeof useContainer>

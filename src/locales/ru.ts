@@ -7,7 +7,9 @@ export const ru = {
     title: 'Войти',
   },
   buttons: {
+    hide: 'Скрыть',
     no: 'Нет',
+    showMore: 'Показать больше',
     yes: 'Да',
   },
   followers: {
@@ -30,6 +32,10 @@ export const ru = {
     postsList: 'Список постов',
     statistics: 'Статистика',
     usersList: 'Список пользователей',
+  },
+  time: {
+    hours: 'ч',
+    minutes: 'мин назад',
   },
   userInfo: {
     backToUsersList: 'Назад к списку пользователей',

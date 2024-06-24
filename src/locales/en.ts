@@ -7,7 +7,9 @@ export const en = {
     title: 'Sign in',
   },
   buttons: {
+    hide: 'Hide',
     no: 'No',
+    showMore: 'Show More',
     yes: 'Yes',
   },
   followers: {
@@ -30,6 +32,10 @@ export const en = {
     postsList: 'Posts list',
     statistics: 'Statistics',
     usersList: 'Users list',
+  },
+  time: {
+    hours: 'h',
+    minutes: 'min ago',
   },
   userInfo: {
     backToUsersList: 'Back to Users List',
