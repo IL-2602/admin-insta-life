@@ -14,7 +14,7 @@ export type BodyProps = ComponentPropsWithoutRef<'tbody'>
 export type RowProps = ComponentPropsWithoutRef<'tr'>
 export type HeadCellProps = {
   name?: string
-  onSort?: (sort: HeadCellSort) => void
+  onSort?: (sort: HeadCellSort | null) => void
   sort?: HeadCellSort
 } & ComponentPropsWithoutRef<'th'>
 export type HeadCellSort = {
@@ -59,24 +59,48 @@ export const HeadCell: FC<HeadCellProps> = ({
     headCell: clsx(className, s.headCell),
   }
 
-  const onClickSortHandler = (key: string) => {
+  const onClickSortHandler = (key: string, direction: 'Asc' | 'Desc' | null) => {
     if (!onSort) {
       return
     }
+    if (key !== sort?.key) {
+      return onSort({
+        direction: 'Asc',
+        key,
+      })
+    }
 
-    return onSort({
-      direction: sort?.direction === 'Asc' ? 'Desc' : 'Asc',
-      key,
-    })
+    switch (direction) {
+      case 'Asc': {
+        return onSort({
+          direction: 'Desc',
+          key,
+        })
+      }
+      case 'Desc': {
+        return onSort(null)
+      }
+      default:
+        return onSort({
+          direction: 'Asc',
+          key,
+        })
+    }
   }
 
   const sortIcon = () => {
     if (sort?.key === name) {
-      return sort?.direction === 'Desc' ? (
-        <ChevronSortDown />
-      ) : (
-        <ChevronSortDown className={s.chevronUp} />
-      )
+      switch (sort?.direction) {
+        case 'Asc': {
+          return <ChevronSortDown />
+        }
+        case 'Desc': {
+          return <ChevronSortDown className={s.chevronUp} />
+        }
+
+        default:
+          return <ChevronsSort />
+      }
     }
 
     return <ChevronsSort />
@@ -87,7 +111,7 @@ export const HeadCell: FC<HeadCellProps> = ({
       <th className={classNames.headCell} {...rest}>
         <Button
           className={s.sortableButton}
-          onClick={() => onClickSortHandler(name)}
+          onClick={() => onClickSortHandler(name, sort?.direction)}
           variant={'noStyle'}
         >
           <Typography variant={'bold14'}>{children}</Typography>
