@@ -27,6 +27,9 @@ export const ru = {
     paymentType: 'Тип оплаты',
     subscriptionType: 'Тип подписки',
   },
+  postsList: {
+    noPosts: 'К сожалению, постов не найдено',
+  },
   sidebar: {
     logout: 'Выйти',
     paymentsList: 'Список оплат',

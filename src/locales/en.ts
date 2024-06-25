@@ -27,6 +27,9 @@ export const en = {
     paymentType: 'Payment Type',
     subscriptionType: 'Subscription Type',
   },
+  postsList: {
+    noPosts: 'Sorry, no posts found',
+  },
   sidebar: {
     logout: 'Log out',
     paymentsList: 'Payments list',
