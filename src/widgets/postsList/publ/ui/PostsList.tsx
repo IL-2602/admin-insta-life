@@ -26,8 +26,12 @@ export const PostsList = memo(
           placeholder={'Search'}
         />
 
-        <section className={clsx(!loading ? s.photosWrapper : s.spinner)}>
-          {loading && <Spinner />}
+        <section className={s.photosWrapper}>
+          {loading && (
+            <div className={s.spinner}>
+              <Spinner />
+            </div>
+          )}
           {posts?.map(item => {
             return (
               <div className={s.photoWrapper} key={item.id}>
