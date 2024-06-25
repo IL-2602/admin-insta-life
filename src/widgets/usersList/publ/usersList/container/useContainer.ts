@@ -153,9 +153,14 @@ export const useContainer = () => {
       refetchQueries: [
         {
           context: { base64password },
-          query: GET_USER,
+          query: GET_USERS,
           variables: {
-            userId: userId,
+            pageNumber: currentPage,
+            pageSize: currentSize,
+            searchTerm: state.searchByUsername.trim(),
+            sortBy: sort.key,
+            sortDirection: SortDirection[sort.direction],
+            statusFilter: currentBlockStatus[state.userBlockStatus],
           },
         },
       ],

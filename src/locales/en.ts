@@ -51,7 +51,7 @@ export const en = {
         badBehavior: 'Bad behavior',
         reasonForBan: 'Reason for ban',
       },
-      unbanUser: 'Ban in the system',
+      unbanUser: 'Unban in the system',
       unbanUserText: 'Are you sure to unban this user,',
       unbanUserTitle: 'Unban User',
     },
