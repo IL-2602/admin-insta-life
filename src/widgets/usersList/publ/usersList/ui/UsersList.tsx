@@ -98,13 +98,7 @@ export const UsersList = memo(
                     <Table.Cell>{new Date(user.createdAt).toLocaleDateString()}</Table.Cell>
                     <Table.Cell>
                       <div style={{ cursor: 'pointer' }}>
-                        <UserInteractionAdminApi
-                          // banUser={banU}
-                          // deleteUser={deleteU}
-                          openModal={openModal}
-                          // unbanUser={unbanU}
-                          user={user}
-                        />
+                        <UserInteractionAdminApi openModal={openModal} user={user} />
                       </div>
                     </Table.Cell>
                   </Table.Row>
@@ -113,14 +107,17 @@ export const UsersList = memo(
             )}
           </Table.Body>
         </Table.Root>
-        <Pagination
-          currentPage={currentPage}
-          currentSize={currentSize.toString()}
-          handlePageNumber={handlePageNumber}
-          handlePageSize={handlePageSize}
-          pagesCount={pagination?.pagesCount!}
-          totalCount={pagination?.totalCount!}
-        />
+        {users?.length && (
+          <Pagination
+            currentPage={currentPage}
+            currentSize={currentSize.toString()}
+            handlePageNumber={handlePageNumber}
+            handlePageSize={handlePageSize}
+            pagesCount={pagination?.pagesCount!}
+            totalCount={pagination?.totalCount!}
+          />
+        )}
+
         <AdminApiModal
           banUnbanRemoveUser={banUnbanRemoveUser}
           banUser={banU}

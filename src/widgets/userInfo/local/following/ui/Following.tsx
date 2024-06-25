@@ -62,32 +62,20 @@ export const Following = memo(
                 </Table.Cell>
               </Table.Row>
             )}
-
-            {isLoading ? (
-              <Table.Row>
-                <Table.Cell colSpan={5}>
-                  <div className={s.spinner}>
-                    <Spinner />
-                  </div>
-                </Table.Cell>
-              </Table.Row>
-            ) : (
-              items?.map(follow => {
-                return (
-                  <Table.Row key={follow.id}>
-                    <Table.Cell>{follow.userId}</Table.Cell>
-                    <Table.Cell>{follow.userName}</Table.Cell>
-                    <Table.Cell>
-                      <Link
-                        className={s.link}
-                        href={ROUTES.USER(follow.userId)}
-                      >{`<<<o_O>>>`}</Link>
-                    </Table.Cell>
-                    <Table.Cell>{new Date(follow.createdAt).toLocaleDateString()}</Table.Cell>
-                  </Table.Row>
-                )
-              })
-            )}
+            {items?.map(follow => {
+              return (
+                <Table.Row key={follow.id}>
+                  <Table.Cell>{follow.userId}</Table.Cell>
+                  <Table.Cell>{follow.userName}</Table.Cell>
+                  <Table.Cell>
+                    <Link className={s.link} href={ROUTES.USER(follow.userId)}>
+                      user {follow.userId}
+                    </Link>
+                  </Table.Cell>
+                  <Table.Cell>{new Date(follow.createdAt).toLocaleDateString()}</Table.Cell>
+                </Table.Row>
+              )
+            })}
           </Table.Body>
         </Table.Root>
         {items?.length !== 0 ? (

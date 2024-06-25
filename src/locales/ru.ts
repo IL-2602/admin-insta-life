@@ -23,6 +23,7 @@ export const ru = {
     amount: 'Сумма, $',
     dateOfPayment: 'Дата оплаты',
     dateOfSubscription: 'Дата окончания подписки',
+    empty: 'Оплат нет',
     paymentType: 'Тип оплаты',
     subscriptionType: 'Тип подписки',
   },

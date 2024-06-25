@@ -21,6 +21,7 @@ import getFromLocalStorage from '@/shared/utils/localStorage/getFromLocalStorage
 import {
   INITIAL_PAGE_NUMBER,
   INITIAL_PAGE_SIZE,
+  INITIAL_SORT,
 } from '@/widgets/usersList/publ/usersList/constants/constants'
 import { useMutation, useQuery } from '@apollo/client'
 
@@ -37,7 +38,7 @@ export const useContainer = () => {
 
   const [currentPage, setCurrentPage] = useState<number>(INITIAL_PAGE_NUMBER)
   const [currentSize, setCurrentSize] = useState<number>(INITIAL_PAGE_SIZE)
-  const [sort, setSort] = useState<HeadCellSort>({ direction: 'Asc', key: 'createdAt' })
+  const [sort, setSort] = useState<HeadCellSort>(INITIAL_SORT)
 
   const dispatch = useAppDispatch()
   const state = useAppSelector(state => state.usersReducer)
@@ -105,8 +106,9 @@ export const useContainer = () => {
       dispatch(usersActions.isDeleteUserModal(true))
     }
   }
-  const handleSortTable = (sort: HeadCellSort | null) =>
-    sort ? setSort(sort) : setSort({ direction: 'Desc', key: 'createdAt' })
+  const handleSortTable = (sort: HeadCellSort | null) => {
+    sort?.direction ? setSort(sort) : setSort(INITIAL_SORT)
+  }
 
   const clearModalState = () => {
     dispatch(usersActions.closeModal())
@@ -153,9 +155,14 @@ export const useContainer = () => {
       refetchQueries: [
         {
           context: { base64password },
-          query: GET_USER,
+          query: GET_USERS,
           variables: {
-            userId: userId,
+            pageNumber: currentPage,
+            pageSize: currentSize,
+            searchTerm: state.searchByUsername.trim(),
+            sortBy: sort.key,
+            sortDirection: SortDirection[sort.direction],
+            statusFilter: currentBlockStatus[state.userBlockStatus],
           },
         },
       ],
