@@ -9,6 +9,7 @@ import { SortDirection } from '@/services/types'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { HeadCellSort } from '@/shared/ui/Table/Table'
 import getFromLocalStorage from '@/shared/utils/localStorage/getFromLocalStorage'
+import { INITIAL_SORT } from '@/widgets/userInfo/local/following/constants/constant'
 import {
   INITIAL_PAGE_NUMBER,
   INITIAL_PAGE_SIZE,
@@ -22,7 +23,7 @@ export const useContainer = () => {
 
   const [currentPage, setCurrentPage] = useState<number>(INITIAL_PAGE_NUMBER)
   const [currentSize, setCurrentSize] = useState<number>(INITIAL_PAGE_SIZE)
-  const [sort, setSort] = useState<HeadCellSort>({ direction: 'Asc', key: 'createdAt' })
+  const [sort, setSort] = useState<HeadCellSort>(INITIAL_SORT)
 
   const {
     query: { id = '' },
@@ -66,7 +67,7 @@ export const useContainer = () => {
   }
 
   const handleSortTable = (sort: HeadCellSort | null) =>
-    sort ? setSort(sort) : setSort({ direction: 'Desc', key: 'createdAt' })
+    sort ? setSort(sort) : setSort(INITIAL_SORT)
 
   return {
     currentPage,
