@@ -107,14 +107,17 @@ export const UsersList = memo(
             )}
           </Table.Body>
         </Table.Root>
-        <Pagination
-          currentPage={currentPage}
-          currentSize={currentSize.toString()}
-          handlePageNumber={handlePageNumber}
-          handlePageSize={handlePageSize}
-          pagesCount={pagination?.pagesCount!}
-          totalCount={pagination?.totalCount!}
-        />
+        {users?.length && (
+          <Pagination
+            currentPage={currentPage}
+            currentSize={currentSize.toString()}
+            handlePageNumber={handlePageNumber}
+            handlePageSize={handlePageSize}
+            pagesCount={pagination?.pagesCount!}
+            totalCount={pagination?.totalCount!}
+          />
+        )}
+
         <AdminApiModal
           banUnbanRemoveUser={banUnbanRemoveUser}
           banUser={banU}
