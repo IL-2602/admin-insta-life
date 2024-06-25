@@ -8,6 +8,8 @@ import Image from 'next/image'
 
 import s from './PostPhotos.module.scss'
 
+import noPhoto from '../../../../public/noPhoto.svg'
+
 type Props = {
   className?: string
   height: number
@@ -40,7 +42,7 @@ export const PostPhotos = ({ height, id, ownerId, photos, width, ...rest }: Prop
       <Image
         alt={'photo'}
         height={height}
-        src={photos[currentPhotoIndex]}
+        src={photos[currentPhotoIndex] || noPhoto}
         width={width}
         {...rest}
       />

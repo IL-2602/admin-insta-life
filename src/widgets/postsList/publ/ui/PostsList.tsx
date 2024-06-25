@@ -1,10 +1,10 @@
-import { memo } from 'react'
+import { forwardRef } from 'react'
 
 import { PostDescription } from '@/shared/components/PostDescription/PostDescription'
 import { PostPhotos } from '@/shared/components/PostPhotos/PostPhotos'
 import { TimeDifference } from '@/shared/components/TimeDifference/TimeDefference'
 import { Search } from '@/shared/ui/Search'
-import { Spinner } from '@/shared/ui/Spinner'
+import { SpinnerThreePoints } from '@/shared/ui/SpinnerThreePoints'
 import { TextField } from '@/shared/ui/Textfield'
 import { Typography } from '@/shared/ui/Typography'
 import { PostsListProps } from '@/widgets/postsList/publ/container'
@@ -15,8 +15,8 @@ import s from './PostsList.module.scss'
 
 import noAvatar from '../../../../../public/noPhoto.svg'
 
-export const PostsList = memo(
-  ({ handleSearchInput, loading, openPosts, posts, setOpenPosts }: PostsListProps) => {
+export const PostsList = forwardRef<HTMLDivElement, PostsListProps>(
+  ({ handleSearchInput, isLoading, openPosts, posts, setOpenPosts, t }, ref) => {
     return (
       <div className={s.container}>
         <TextField
@@ -27,10 +27,10 @@ export const PostsList = memo(
         />
 
         <section className={s.photosWrapper}>
-          {loading && (
-            <div className={s.spinner}>
-              <Spinner />
-            </div>
+          {posts?.length === 0 && (
+            <Typography as={'span'} className={s.noPosts} color={'form'} variant={'regular16'}>
+              {t.postsList.noPosts}
+            </Typography>
           )}
           {posts?.map(item => {
             return (
@@ -76,6 +76,12 @@ export const PostsList = memo(
             )
           })}
         </section>
+        <div ref={ref}></div>
+        {isLoading && (
+          <div className={s.fetchSpinner}>
+            <SpinnerThreePoints />
+          </div>
+        )}
       </div>
     )
   }
