@@ -21,6 +21,7 @@ import getFromLocalStorage from '@/shared/utils/localStorage/getFromLocalStorage
 import {
   INITIAL_PAGE_NUMBER,
   INITIAL_PAGE_SIZE,
+  INITIAL_SORT,
 } from '@/widgets/usersList/publ/usersList/constants/constants'
 import { useMutation, useQuery } from '@apollo/client'
 
@@ -37,7 +38,7 @@ export const useContainer = () => {
 
   const [currentPage, setCurrentPage] = useState<number>(INITIAL_PAGE_NUMBER)
   const [currentSize, setCurrentSize] = useState<number>(INITIAL_PAGE_SIZE)
-  const [sort, setSort] = useState<HeadCellSort>({ direction: 'Desc', key: 'userBan' })
+  const [sort, setSort] = useState<HeadCellSort>(INITIAL_SORT)
 
   const dispatch = useAppDispatch()
   const state = useAppSelector(state => state.usersReducer)
@@ -106,8 +107,7 @@ export const useContainer = () => {
     }
   }
   const handleSortTable = (sort: HeadCellSort | null) => {
-    console.log('useContainer sort', !sort?.direction)
-    sort?.direction ? setSort(sort) : setSort({ direction: 'Desc', key: 'userBan' })
+    sort?.direction ? setSort(sort) : setSort(INITIAL_SORT)
   }
 
   const clearModalState = () => {
