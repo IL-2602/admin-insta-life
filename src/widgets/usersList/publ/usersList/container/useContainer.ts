@@ -37,7 +37,7 @@ export const useContainer = () => {
 
   const [currentPage, setCurrentPage] = useState<number>(INITIAL_PAGE_NUMBER)
   const [currentSize, setCurrentSize] = useState<number>(INITIAL_PAGE_SIZE)
-  const [sort, setSort] = useState<HeadCellSort>({ direction: 'Asc', key: 'createdAt' })
+  const [sort, setSort] = useState<HeadCellSort>({ direction: 'Desc', key: 'userBan' })
 
   const dispatch = useAppDispatch()
   const state = useAppSelector(state => state.usersReducer)
@@ -105,8 +105,10 @@ export const useContainer = () => {
       dispatch(usersActions.isDeleteUserModal(true))
     }
   }
-  const handleSortTable = (sort: HeadCellSort | null) =>
-    sort ? setSort(sort) : setSort({ direction: 'Desc', key: 'createdAt' })
+  const handleSortTable = (sort: HeadCellSort | null) => {
+    console.log('useContainer sort', !sort?.direction)
+    sort?.direction ? setSort(sort) : setSort({ direction: 'Desc', key: 'userBan' })
+  }
 
   const clearModalState = () => {
     dispatch(usersActions.closeModal())
