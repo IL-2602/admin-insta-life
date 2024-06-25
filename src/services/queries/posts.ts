@@ -26,7 +26,6 @@ export const GET_POSTS = gql`
       sortBy: $sortBy
       sortDirection: $sortDirection
     ) {
-      totalCount
       items {
         images {
           url

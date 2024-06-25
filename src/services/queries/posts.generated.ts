@@ -44,7 +44,6 @@ export type GetPostsQuery = {
         userName: string
       }
     }>
-    totalCount: number
   }
 }
 
@@ -131,7 +130,6 @@ export const GetPostsDocument = gql`
       sortBy: $sortBy
       sortDirection: $sortDirection
     ) {
-      totalCount
       items {
         images {
           url
