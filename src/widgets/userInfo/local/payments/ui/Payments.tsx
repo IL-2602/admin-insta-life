@@ -12,12 +12,12 @@ export const Payments = memo(
   ({
     currentPage,
     currentSize,
-    handlePageNumber,
-    handlePageSize,
     isLoading,
     pagesCount,
     payments,
     paymentsTypeMap,
+    setCurrentPage,
+    setCurrentSize,
     t,
     totalCount,
   }: PaymentsProps) => {
@@ -27,10 +27,10 @@ export const Payments = memo(
           <Table.Head>
             <Table.Row>
               <Table.HeadCell>{t.payments.dateOfPayment}</Table.HeadCell>
-              <Table.HeadCell name={'userName'}>{t.payments.dateOfSubscription}</Table.HeadCell>
+              <Table.HeadCell>{t.payments.dateOfSubscription}</Table.HeadCell>
               <Table.HeadCell>{t.payments.amount}</Table.HeadCell>
-              <Table.HeadCell name={'createdAt'}>{t.payments.subscriptionType}</Table.HeadCell>
-              <Table.HeadCell name={'createdAt'}>{t.payments.paymentType}</Table.HeadCell>
+              <Table.HeadCell>{t.payments.subscriptionType}</Table.HeadCell>
+              <Table.HeadCell>{t.payments.paymentType}</Table.HeadCell>
             </Table.Row>
           </Table.Head>
           <Table.Body>
@@ -72,9 +72,9 @@ export const Payments = memo(
         <Pagination
           currentPage={currentPage}
           currentSize={currentSize.toString()}
-          handlePageNumber={handlePageNumber}
-          handlePageSize={handlePageSize}
           pagesCount={pagesCount!}
+          setCurrentPage={setCurrentPage}
+          setCurrentSize={setCurrentSize}
           totalCount={totalCount!}
         />
       </div>
