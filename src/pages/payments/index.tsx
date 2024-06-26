@@ -1,5 +1,6 @@
 import { getRootLayout } from '@/layouts/public/rootLayout'
 import { AuthDefender } from '@/shared/hocs/AuthDefender'
+import { PaymentsList } from '@/widgets/paymentsList/publ/paymentsList'
 import Head from 'next/head'
 
 const PaymentsPage = () => {
@@ -11,7 +12,9 @@ const PaymentsPage = () => {
         <meta content={'width=device-width, initial-scale=1'} name={'viewport'} />
         <link href={'/favicon.ico'} rel={'icon'} />
       </Head>
-      <div>PAYMENTS LIST</div>
+      <div>
+        <PaymentsList.widget />
+      </div>
     </>
   )
 }

@@ -75,22 +75,6 @@ export const useContainer = () => {
   const users = data?.getUsers.users
   const pagination = data?.getUsers.pagination
 
-  const handlePageNumber = (pageNumber: number) => {
-    setCurrentPage(pageNumber)
-
-    if (currentSize !== INITIAL_PAGE_SIZE) {
-      setCurrentSize(INITIAL_PAGE_SIZE)
-    }
-  }
-
-  const handlePageSize = (pageSize: string) => {
-    setCurrentSize(+pageSize)
-
-    if (pagination?.pagesCount !== INITIAL_PAGE_NUMBER && currentSize !== pagination?.totalCount) {
-      setCurrentPage(INITIAL_PAGE_NUMBER)
-    }
-  }
-
   const closeModal = () => {
     dispatch(usersActions.closeModal())
     dispatch(usersActions.setBanUnbanRemoveUser({ id: 0, name: '' }))
@@ -149,6 +133,7 @@ export const useContainer = () => {
       clearModalState()
     })
   }
+
   const deleteU = (userId: number) => {
     removeUser({
       context: { base64password },
@@ -179,8 +164,6 @@ export const useContainer = () => {
     currentPage,
     currentSize,
     deleteU,
-    handlePageNumber,
-    handlePageSize,
     handleSortTable,
     isBanUserModal,
     isDeleteUserModal,
@@ -191,6 +174,8 @@ export const useContainer = () => {
     loadingUnban,
     openModal,
     pagination,
+    setCurrentPage,
+    setCurrentSize,
     sort,
     state,
     t,

@@ -48,19 +48,17 @@ export const useContainer = () => {
 
   const handleSortTable = (sort: HeadCellSort | null) =>
     sort ? setSort(sort) : setSort(INITIAL_SORT)
-  const handleNextPage = (page: number) => setCurrentPage(page)
-  const handlePageSize = (size: string) => setCurrentSize(+size)
 
   return {
     currentPage,
     currentSize,
     followers,
-    handleNextPage,
-    handlePageSize,
     handleSortTable,
     loading,
     paginationPagesCount,
     paginationTotalCount,
+    setCurrentPage,
+    setCurrentSize,
     sort,
     t,
     uId,
