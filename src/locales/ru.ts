@@ -22,6 +22,7 @@ export const ru = {
     dateOfPayment: 'Дата оплаты',
     dateOfSubscription: 'Дата окончания подписки',
     empty: 'Оплат нет',
+    notFound: 'Такого платежа не существует',
     paymentType: 'Тип оплаты',
     subscriptionType: 'Тип подписки',
   },
