@@ -44,7 +44,7 @@ export const Pagination = ({
       case totalCount > 40 && totalCount <= 50:
         return ['10', '20', '30', '40', `${totalCount}`]
       default:
-        return ['10', '20', '30', '40', '50', `${totalCount}`]
+        return ['10', '20', '30', '40', '50', '100']
     }
   }
 
