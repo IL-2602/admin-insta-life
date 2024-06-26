@@ -1,4 +1,3 @@
-/* eslint max-lines: off */
 export type Maybe<T> = T | null
 export type InputMaybe<T> = Maybe<T>
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
@@ -298,7 +297,7 @@ export type SubscriptionPaymentsModel = {
   userId?: Maybe<Scalars['Int']['output']>
   userName: Scalars['String']['output']
 }
-
+// eslint-disable-next-line max-lines
 export enum SubscriptionType {
   Day = 'DAY',
   Monthly = 'MONTHLY',
