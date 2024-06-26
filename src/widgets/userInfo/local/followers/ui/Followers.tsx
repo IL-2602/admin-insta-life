@@ -15,12 +15,12 @@ export const Followers = memo(
     currentPage,
     currentSize,
     followers,
-    handleNextPage,
-    handlePageSize,
     handleSortTable,
     loading,
     paginationPagesCount,
     paginationTotalCount,
+    setCurrentPage,
+    setCurrentSize,
     sort,
     t,
     uId,
@@ -86,9 +86,9 @@ export const Followers = memo(
           <Pagination
             currentPage={currentPage}
             currentSize={currentSize.toString()}
-            handlePageNumber={handleNextPage}
-            handlePageSize={handlePageSize}
             pagesCount={paginationPagesCount!}
+            setCurrentPage={setCurrentPage}
+            setCurrentSize={setCurrentSize}
             totalCount={paginationTotalCount!}
           />
         ) : (
