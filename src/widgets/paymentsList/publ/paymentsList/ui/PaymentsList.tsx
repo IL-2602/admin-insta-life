@@ -80,8 +80,6 @@ export const PaymentsList = memo(
               </Table.Row>
             ) : (
               payments?.map(payment => {
-                // console.log(payment.avatars ? payment.avatars[0].url! : noAvatar)
-
                 return (
                   <Table.Row key={payment.id}>
                     <Table.Cell>
