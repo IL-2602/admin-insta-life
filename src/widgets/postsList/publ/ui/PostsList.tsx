@@ -1,10 +1,14 @@
-import { forwardRef } from 'react'
+import { forwardRef, useState } from 'react'
 
 import { PostDescription } from '@/shared/components/PostDescription/PostDescription'
 import { PostPhotos } from '@/shared/components/PostPhotos/PostPhotos'
 import { TimeDifference } from '@/shared/components/TimeDifference/TimeDefference'
+import { Button } from '@/shared/ui/Button'
+import { Modal } from '@/shared/ui/Modal/v2'
 import { Search } from '@/shared/ui/Search'
+import { SelectComponent } from '@/shared/ui/SelectComponent'
 import { SpinnerThreePoints } from '@/shared/ui/SpinnerThreePoints'
+import { TextArea } from '@/shared/ui/TextArea'
 import { TextField } from '@/shared/ui/Textfield'
 import { Typography } from '@/shared/ui/Typography'
 import { PostsListProps } from '@/widgets/postsList/publ/container'
@@ -14,9 +18,49 @@ import Image from 'next/image'
 import s from './PostsList.module.scss'
 
 import noAvatar from '../../../../../public/noPhoto.svg'
+import { BanUserIcon } from '../../../../shared/assets/icons/BanUser'
 
 export const PostsList = forwardRef<HTMLDivElement, PostsListProps>(
-  ({ handleSearchInput, isLoading, openPosts, posts, setOpenPosts, t }, ref) => {
+  (
+    {
+      banU,
+      banUnbanRemoveUser,
+      closeModal,
+      handleSearchInput,
+      isBanUserModal,
+      isLoading,
+      openModal,
+      openPosts,
+      posts,
+      setOpenPosts,
+      t,
+    },
+    ref
+  ) => {
+    const reasonsForBan = [
+      `${t.usersList.adminApi.reasons.reasonForBan}`,
+      `${t.usersList.adminApi.reasons.badBehavior}`,
+      `${t.usersList.adminApi.reasons.advertisingPlacement}`,
+      `${t.usersList.adminApi.reasons.anotherReason}`,
+    ]
+
+    const [reason, setReason] = useState(reasonsForBan[0])
+    const [customReason, setCustomReason] = useState('')
+    const isAnotherReason = `${t.usersList.adminApi.reasons.anotherReason}` === reason
+
+    const banReason = () => {
+      if (isAnotherReason && customReason) {
+        banU(banUnbanRemoveUser.id, customReason)
+        setCustomReason('')
+
+        return
+      }
+      banU(banUnbanRemoveUser.id, reason)
+    }
+    const changeReason = (reason: string) => {
+      setReason(reason)
+    }
+
     return (
       <div className={s.container}>
         <TextField
@@ -62,6 +106,9 @@ export const PostsList = forwardRef<HTMLDivElement, PostsListProps>(
                     )}
                   </div>
                   <Typography variant={'h3'}>{item.postOwner.userName}</Typography>
+                  <div className={s.banUserIcon}>
+                    <BanUserIcon onClick={() => openModal(item.ownerId, item.postOwner.userName)} />
+                  </div>
                 </div>
                 <Typography className={s.time} variant={'small'}>
                   <TimeDifference postTime={item.createdAt} />
@@ -81,6 +128,43 @@ export const PostsList = forwardRef<HTMLDivElement, PostsListProps>(
           <div className={s.fetchSpinner}>
             <SpinnerThreePoints />
           </div>
+        )}
+
+        {isBanUserModal && (
+          <Modal onOpen={closeModal} open title={`${t.usersList.adminApi.banUserTitle}`}>
+            <div className={s.modalContent}>
+              <Typography
+                variant={'medium16'}
+              >{`${t.usersList.adminApi.banUserText} ${banUnbanRemoveUser.name} ?`}</Typography>
+              <div className={s.modalSelect}>
+                <SelectComponent
+                  currentValue={reason}
+                  fullWidth
+                  onValueChange={changeReason}
+                  selectItems={reasonsForBan}
+                ></SelectComponent>
+                {isAnotherReason && (
+                  <TextArea
+                    onChange={e => setCustomReason(e.currentTarget.value)}
+                    style={{ marginTop: '10px', resize: 'none' }}
+                    value={customReason}
+                  />
+                )}
+              </div>
+              <div className={s.modalButtons}>
+                <Button onClick={closeModal} variant={'primary'}>
+                  {t.buttons.no}
+                </Button>
+                <Button
+                  disabled={reason === `${t.usersList.adminApi.reasons.reasonForBan}`}
+                  onClick={banReason}
+                  variant={'outlined'}
+                >
+                  {t.buttons.yes}
+                </Button>
+              </div>
+            </div>
+          </Modal>
         )}
       </div>
     )

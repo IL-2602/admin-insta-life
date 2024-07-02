@@ -122,6 +122,12 @@
       background-color: var(--color-dark-700);
       border-radius: 50%;
     }
+
+    .banUserIcon {
+      cursor: pointer;
+      margin-top: auto;
+      margin-left: auto;
+    }
   }
 
   .time {
@@ -152,4 +158,18 @@
       outline: none;
     }
   }
+}
+
+.modalContent {
+  margin: 24px;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 42px;
+}
+
+.modalSelect {
+  margin-top: 18px;
 }
