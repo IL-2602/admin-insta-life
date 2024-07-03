@@ -44,11 +44,12 @@ export const AdminApiModal = ({
   const banReason = () => {
     if (isAnotherReason && customReason) {
       banUser(banUnbanRemoveUser.id, customReason)
-      setCustomReason('')
+      clearReason()
 
       return
     }
     banUser(banUnbanRemoveUser.id, reason)
+    clearReason()
   }
   const changeReason = (reason: string) => {
     setReason(reason)

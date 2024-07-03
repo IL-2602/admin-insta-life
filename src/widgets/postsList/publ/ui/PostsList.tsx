@@ -51,14 +51,24 @@ export const PostsList = forwardRef<HTMLDivElement, PostsListProps>(
     const banReason = () => {
       if (isAnotherReason && customReason) {
         banU(banUnbanRemoveUser.id, customReason)
-        setCustomReason('')
+        clearReason()
 
         return
       }
       banU(banUnbanRemoveUser.id, reason)
+      clearReason()
     }
     const changeReason = (reason: string) => {
       setReason(reason)
+    }
+
+    const close = () => {
+      closeModal()
+      clearReason()
+    }
+    const clearReason = () => {
+      setReason(reasonsForBan[0])
+      setCustomReason('')
     }
 
     return (
@@ -131,7 +141,7 @@ export const PostsList = forwardRef<HTMLDivElement, PostsListProps>(
         )}
 
         {isBanUserModal && (
-          <Modal onOpen={closeModal} open title={`${t.usersList.adminApi.banUserTitle}`}>
+          <Modal onOpen={close} open title={`${t.usersList.adminApi.banUserTitle}`}>
             <div className={s.modalContent}>
               <Typography
                 variant={'medium16'}
@@ -152,7 +162,7 @@ export const PostsList = forwardRef<HTMLDivElement, PostsListProps>(
                 )}
               </div>
               <div className={s.modalButtons}>
-                <Button onClick={closeModal} variant={'primary'}>
+                <Button onClick={close} variant={'primary'}>
                   {t.buttons.no}
                 </Button>
                 <Button
