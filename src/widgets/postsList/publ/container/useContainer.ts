@@ -71,7 +71,7 @@ export const useContainer = () => {
       base64password,
     },
     variables: {
-      endCursorPostId: 1026,
+      endCursorPostId: null,
       pageSize: 12,
       searchTerm: search.trim(),
       sortBy: 'createdAt',
