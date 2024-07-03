@@ -13,7 +13,6 @@ import { SortDirection } from '@/services/types'
 import { usersActions } from '@/services/usersService/store/slice/users.slice'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import getFromLocalStorage from '@/shared/utils/localStorage/getFromLocalStorage'
-import { ModalType } from '@/widgets/usersList/publ/usersList/container/useContainer'
 import { useMutation, useQuery } from '@apollo/client'
 
 export const useContainer = () => {
@@ -40,9 +39,7 @@ export const useContainer = () => {
     dispatch(usersActions.setBanUnbanRemoveUser({ id: 0, name: '' }))
   }
 
-  const [banUser, { loading: loadingBan }] = useMutation<BanUserMutation, BanUserMutationVariables>(
-    BAN_USER
-  )
+  const [banUser] = useMutation<BanUserMutation, BanUserMutationVariables>(BAN_USER)
 
   const banU = (userId: number, reason: string) => {
     banUser({
@@ -63,7 +60,7 @@ export const useContainer = () => {
     })
   }
 
-  const { data, fetchMore, loading, subscribeToMore } = useQuery<
+  const { data, fetchMore, loading, refetch, subscribeToMore } = useQuery<
     GetPostsQuery,
     GetPostsQueryVariables
   >(GET_POSTS, {
@@ -130,12 +127,16 @@ export const useContainer = () => {
 
         const newPost = subscriptionData.data.postAdded
 
+        if (newPost) {
+          void refetch()
+        }
+
         return Object.assign({}, previousQueryResult, {
-          allPosts: [...previousQueryResult.getPosts.items, newPost],
+          items: [...previousQueryResult.getPosts.items, newPost],
         })
       },
     })
-  }, [subscribeToMore])
+  }, [subscribeToMore, refetch])
 
   const handleSearchInput = (evt: ChangeEvent<HTMLInputElement>) => {
     setSearch(evt.target.value)
