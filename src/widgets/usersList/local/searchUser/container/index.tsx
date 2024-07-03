@@ -7,13 +7,3 @@ import { SearchUser } from '../ui/SearchUser'
 export const Container: FC = () => <SearchUser {...useContainer()} />
 
 export type SearchUserProps = ReturnType<typeof useContainer>
-
-// import { FC } from 'react'
-//
-// import { useContainer } from '@/widgets/usersList/publ/usersList/container/useContainer'
-//
-// import { PostPhotos } from '../ui/PostPhotos'
-//
-// export const Container: FC = () => <PostPhotos {...useContainer()} />
-//
-// export type UsersListProps = ReturnType<typeof useContainer>

@@ -14,12 +14,12 @@ export const Following = memo(
   ({
     currentPage,
     currentSize,
-    handlePageNumber,
-    handlePageSize,
     handleSortTable,
     isLoading,
     items,
     pagesCount,
+    setCurrentPage,
+    setCurrentSize,
     sort,
     t,
     totalCount,
@@ -82,9 +82,9 @@ export const Following = memo(
           <Pagination
             currentPage={currentPage}
             currentSize={currentSize.toString()}
-            handlePageNumber={handlePageNumber}
-            handlePageSize={handlePageSize}
             pagesCount={pagesCount!}
+            setCurrentPage={setCurrentPage}
+            setCurrentSize={setCurrentSize}
             totalCount={totalCount!}
           />
         ) : (

@@ -48,31 +48,15 @@ export const useContainer = () => {
   const totalCount = data?.getPaymentsByUser.totalCount
   const pagesCount = data?.getPaymentsByUser.pagesCount
 
-  const handlePageSize = (pageSize: string) => {
-    setCurrentSize(+pageSize)
-
-    if (pagesCount !== INITIAL_PAGE_NUMBER && currentSize !== totalCount) {
-      setCurrentPage(INITIAL_PAGE_NUMBER)
-    }
-  }
-
-  const handlePageNumber = (pageNumber: number) => {
-    setCurrentPage(pageNumber)
-
-    if (currentSize !== INITIAL_PAGE_SIZE) {
-      setCurrentSize(INITIAL_PAGE_SIZE)
-    }
-  }
-
   return {
     currentPage,
     currentSize,
-    handlePageNumber,
-    handlePageSize,
     isLoading,
     pagesCount,
     payments,
     paymentsTypeMap,
+    setCurrentPage,
+    setCurrentSize,
     t,
     totalCount,
   }

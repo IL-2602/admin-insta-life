@@ -24,8 +24,6 @@ export const UsersList = memo(
     currentPage,
     currentSize,
     deleteU,
-    handlePageNumber,
-    handlePageSize,
     handleSortTable,
     isBanUserModal,
     isDeleteUserModal,
@@ -35,6 +33,8 @@ export const UsersList = memo(
     loadingUnban,
     openModal,
     pagination,
+    setCurrentPage,
+    setCurrentSize,
     sort,
     state,
     t,
@@ -92,9 +92,13 @@ export const UsersList = memo(
                       </div>
                     </Table.Cell>
                     <Table.Cell>{user.userName}</Table.Cell>
-                    <Link className={s.link} href={ROUTES.USER(user.id)}>
-                      <Table.Cell>{user.email}</Table.Cell>
-                    </Link>
+
+                    <Table.Cell>
+                      <Link className={s.link} href={ROUTES.USER(user.id)}>
+                        {user.email}
+                      </Link>
+                    </Table.Cell>
+
                     <Table.Cell>{new Date(user.createdAt).toLocaleDateString()}</Table.Cell>
                     <Table.Cell>
                       <div style={{ cursor: 'pointer' }}>
@@ -107,13 +111,13 @@ export const UsersList = memo(
             )}
           </Table.Body>
         </Table.Root>
-        {users?.length && (
+        {users?.length !== 0 && (
           <Pagination
             currentPage={currentPage}
             currentSize={currentSize.toString()}
-            handlePageNumber={handlePageNumber}
-            handlePageSize={handlePageSize}
             pagesCount={pagination?.pagesCount!}
+            setCurrentPage={setCurrentPage}
+            setCurrentSize={setCurrentSize}
             totalCount={pagination?.totalCount!}
           />
         )}

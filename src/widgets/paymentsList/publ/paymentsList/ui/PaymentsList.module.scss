@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+
+  .photosWrapper {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+
+    .photo {
+      border-radius: 50%;
+    }
+
+    .noPhoto {
+      display: grid;
+      place-items: center;
+
+      width: 36px;
+      height: 36px;
+
+      border: 0.7px solid var(--color-light-300);
+      border-radius: 50%;
+    }
+  }
+
+  input {
+    padding-bottom: 3px;
+  }
+
+  input::placeholder {
+    font: var(--font-regular-16);
+  }
+
+  .search {
+    margin-bottom: 24px;
+  }
+
+  .spinner {
+    display: grid;
+    place-items: center;
+    height: 50vh;
+  }
+
+  .searchNotFound {
+    display: grid;
+    place-items: center;
+    height: 5vh;
+  }
+}

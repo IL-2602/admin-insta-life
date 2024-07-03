@@ -41,17 +41,13 @@
 
     padding: 10px 0;
 
-
-    & > *:not(:last-child){
+    & > *:not(:last-child) {
       margin-right: 10px;
     }
-
 
     .chevronUp {
       transform: rotate(-180deg);
     }
-
-
   }
 }
 
