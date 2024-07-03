@@ -35,6 +35,7 @@ export const useContainer = () => {
     context: {
       base64password,
     },
+    skip: !query.id,
     variables: {
       endCursorId: undefined,
       userId: +query.id!,
@@ -67,7 +68,7 @@ export const useContainer = () => {
             },
             variables: {
               endCursorId: userPosts[userPosts.length - 1].id,
-              userId: 3,
+              userId: +query.id!,
             },
           })
         } catch (e) {

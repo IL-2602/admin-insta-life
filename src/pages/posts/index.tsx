@@ -1,5 +1,6 @@
 import { getRootLayout } from '@/layouts/public/rootLayout'
 import { AuthDefender } from '@/shared/hocs/AuthDefender'
+import { PostsList } from '@/widgets/postsList/publ'
 import Head from 'next/head'
 
 const PostsPage = () => {
@@ -11,7 +12,9 @@ const PostsPage = () => {
         <meta content={'width=device-width, initial-scale=1'} name={'viewport'} />
         <link href={'/favicon.ico'} rel={'icon'} />
       </Head>
-      <div>POSTS LIST</div>
+      <div>
+        <PostsList.widget />
+      </div>
     </>
   )
 }
