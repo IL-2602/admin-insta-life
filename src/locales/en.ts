@@ -7,7 +7,9 @@ export const en = {
     title: 'Sign in',
   },
   buttons: {
+    hide: 'Hide',
     no: 'No',
+    showMore: 'Show More',
     yes: 'Yes',
   },
   followers: {
@@ -26,12 +28,19 @@ export const en = {
     paymentType: 'Payment Type',
     subscriptionType: 'Subscription Type',
   },
+  postsList: {
+    noPosts: 'Sorry, no posts found',
+  },
   sidebar: {
     logout: 'Log out',
     paymentsList: 'Payments list',
     postsList: 'Posts list',
     statistics: 'Statistics',
     usersList: 'Users list',
+  },
+  time: {
+    hours: 'h',
+    minutes: 'min ago',
   },
   userInfo: {
     backToUsersList: 'Back to Users List',

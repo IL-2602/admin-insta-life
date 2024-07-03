@@ -44,20 +44,30 @@ export const AdminApiModal = ({
   const banReason = () => {
     if (isAnotherReason && customReason) {
       banUser(banUnbanRemoveUser.id, customReason)
-      setCustomReason('')
+      clearReason()
 
       return
     }
     banUser(banUnbanRemoveUser.id, reason)
+    clearReason()
   }
   const changeReason = (reason: string) => {
     setReason(reason)
   }
 
+  const close = () => {
+    closeModal()
+    clearReason()
+  }
+  const clearReason = () => {
+    setReason(reasonsForBan[0])
+    setCustomReason('')
+  }
+
   return (
     <>
       {isBanUserModal && (
-        <Modal onOpen={closeModal} open title={`${t.usersList.adminApi.banUserTitle}`}>
+        <Modal onOpen={close} open title={`${t.usersList.adminApi.banUserTitle}`}>
           <div className={s.modalContent}>
             <Typography
               variant={'medium16'}
@@ -78,7 +88,7 @@ export const AdminApiModal = ({
               )}
             </div>
             <div className={s.modalButtons}>
-              <Button onClick={closeModal} variant={'primary'}>
+              <Button onClick={close} variant={'primary'}>
                 {t.buttons.no}
               </Button>
               <Button
