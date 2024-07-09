@@ -50,7 +50,7 @@ export const PostDescription = ({ description, id, openPosts, setOpenPosts }: Pr
     )
   } else if (description.length > 105 && description.length <= 320 && !openPosts[id]) {
     return (
-      <Typography>
+      <Typography className={s.lineClamp}>
         {description.slice(0, 84)}
         <span style={{ paddingRight: '3px' }}>...</span>
         <Button className={s.btnMore} onClick={() => handleToggleText(String(id))} variant={'link'}>
